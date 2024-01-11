@@ -23,10 +23,35 @@
 
     <title>Document</title>
     <link rel="stylesheet" href="./src/style/index.css" />
+
+    <!-- sql.js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.9.0/sql-wasm.js"
+      integrity="sha512-PAyD/84QEfxE1X/H3RDJY9kqXtJObyGq6qA93+LnkMNWdTLHjcTKHsDOcz6Y5xAdsaMGItRP5vNs4vtj3/FRuw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <header class="header"></header>
-    <main class="main"></main>
+    <main class="main">
+      <h1>SQL ONLINE DEMO</h1>
+      <section class="code-editor">
+        <h2 class="sr-only">코드 입력</h2>
+        <textarea
+          name="sqlCode"
+          id="sqlCode"
+          cols="30"
+          rows="10"
+          class="inp-code"
+        ></textarea>
+        <button class="btn-run">Run SQL</button>
+      </section>
+      <section class="cont-result">
+        <h2 class="sr-only">결과 테이블</h2>
+        <table></table>
+      </section>
+    </main>
     <footer class="footer"></footer>
     <script src="./src/js/index.js"></script>
   </body>
