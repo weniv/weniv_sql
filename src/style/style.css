@@ -551,6 +551,25 @@ button {
     mask-repeat: no-repeat;
     mask-position: center center; }
 
+/* table */
+table {
+  width: 100%;
+  overflow: scroll;
+  border: 1px solid var(--ColorGrayLv2);
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  font-weight: 400; }
+
+thead {
+  font-weight: 500;
+  background-color: var(--ColorGrayLv1); }
+
+th,
+td {
+  padding: 1rem 1.6rem;
+  white-space: nowrap;
+  border: 1px solid var(--ColorGrayLv2); }
+
 .header {
   position: sticky;
   height: 7rem;
@@ -659,6 +678,9 @@ button {
     .code-cont .code-btns .line {
       width: 1px;
       background-color: var(--ColorGrayLv2); }
+
+.table-cont {
+  overflow-x: auto; }
 
 .notebook {
   display: flex;

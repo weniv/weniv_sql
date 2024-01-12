@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
       theme: 'monokai',
     },
   );
-  window.editor.setValue('SELECT * FROM student;');
+  window.editor.setValue('SELECT * FROM test;');
 
   CodeMirror.commands.autocomplete = function (cm) {
     CodeMirror.showHint(cm, CodeMirror.hint.sql, {

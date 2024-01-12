@@ -1,19 +1,3 @@
-const createTable = (db, tableName, columns, values) => {
-  let sqlStr = `CREATE TABLE IF NOT EXISTS ${tableName} `;
-  sqlStr += ` (${columns
-    .map((column, idx) => {
-      `${column} ${getModifedType(values[0][idx])})}`;
-    })
-    .join(',')})`;
-  db.run(sqlStr);
-
-  const stmt = db.prepare(
-    `INSERT INTO ${tableName} VALUES (${columns.map(() => '?').join(',')})`,
-  );
-  values.forEach((value) => stmt.run(value));
-  stmt.free();
-};
-
 const getModifiedType = (value) => {
   switch (typeof value) {
     case 'string':
@@ -27,6 +11,28 @@ const getModifiedType = (value) => {
   }
 };
 
+const createTable = (db, tableName, columns, values) => {
+  console.log('columns', columns);
+  const test = columns.map((column, index) => {
+    return `column ${column}`;
+  });
+
+  let sqlStr = `CREATE TABLE IF NOT EXISTS ${tableName} `;
+  sqlStr += ` (${columns
+    .map((column, idx) => {
+      return `${column} ${getModifiedType(values[0][idx])}`;
+    })
+    .join(', ')})`;
+  console.log(sqlStr);
+  db.run(sqlStr);
+
+  const stmt = db.prepare(
+    `INSERT INTO ${tableName} VALUES (${columns.map(() => '?').join(',')})`,
+  );
+  values.forEach((value) => stmt.run(value));
+  stmt.free();
+};
+
 const getJsonToTable = async (db, file) => {
   const response = await fetch(`./src/data/${file}.json`, {
     headers: {
@@ -35,7 +41,7 @@ const getJsonToTable = async (db, file) => {
     },
   });
   const data = await response.json();
-
+  console.log('data', data);
   const columns = Object.keys(data[0]);
   const values = data.map((value) => Object.values(value));
 
@@ -81,7 +87,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   const db = new SQL.Database();
 
-  const tableList = [];
+  // set use database
+  const tableList = ['test'];
 
   await Promise.all(tableList.map((file) => getJsonToTable(db, file)));
 
