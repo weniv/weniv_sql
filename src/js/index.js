@@ -4,11 +4,11 @@ const createTable = (db, tableName, columns, values) => {
     .map((column, idx) => {
       `${column} ${getModifedType(values[0][idx])})}`;
     })
-    .join(",")})`;
+    .join(',')})`;
   db.run(sqlStr);
 
   const stmt = db.prepare(
-    `INSERT INTO ${tableName} VALUES (${columns.map(() => "?").join(",")})`
+    `INSERT INTO ${tableName} VALUES (${columns.map(() => '?').join(',')})`,
   );
   values.forEach((value) => stmt.run(value));
   stmt.free();
@@ -16,22 +16,22 @@ const createTable = (db, tableName, columns, values) => {
 
 const getModifiedType = (value) => {
   switch (typeof value) {
-    case "string":
-      return "TEXT";
-    case "number":
-      return Number.isInteger(value) ? "INTEGER" : "REAL";
-    case "boolean":
-      return "INTEGER";
+    case 'string':
+      return 'TEXT';
+    case 'number':
+      return Number.isInteger(value) ? 'INTEGER' : 'REAL';
+    case 'boolean':
+      return 'INTEGER';
     default:
-      return "TEXT";
+      return 'TEXT';
   }
 };
 
 const getJsonToTable = async (db, file) => {
   const response = await fetch(`./src/data/${file}.json`, {
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
   });
   const data = await response.json();
@@ -46,16 +46,16 @@ const getResultTable = (data) => {
   const columns = data?.columns;
   const values = data?.values;
 
-  const $result = document.querySelector(".cont-result");
-  const table = $result.querySelector("table");
-  table.innerHTML = "";
+  const $result = document.querySelector('.table-cont');
+  const table = $result.querySelector('table');
+  table.innerHTML = '';
 
-  const thead = document.createElement("thead");
-  const tbody = document.createElement("tbody");
+  const thead = document.createElement('thead');
+  const tbody = document.createElement('tbody');
 
-  const tr = document.createElement("tr");
+  const tr = document.createElement('tr');
   columns.forEach((column) => {
-    const th = document.createElement("th");
+    const th = document.createElement('th');
     th.textContent = column;
     tr.appendChild(th);
   });
@@ -63,10 +63,10 @@ const getResultTable = (data) => {
   table.appendChild(thead);
 
   values.forEach((value, index) => {
-    const tr = document.createElement("tr");
+    const tr = document.createElement('tr');
 
     value.forEach((v) => {
-      const td = document.createElement("td");
+      const td = document.createElement('td');
       td.textContent = v;
       tr.appendChild(td);
     });
@@ -75,7 +75,7 @@ const getResultTable = (data) => {
   table.appendChild(tbody);
 };
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const SQL = await initSqlJs({
     locateFile: (file) => `https://sql.js.org/dist/${file}`,
   });
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const runSQL = (db) => {
     try {
-      const $inpCode = document.querySelector(".inp-code");
+      const $inpCode = document.querySelector('.inp-code');
       const res = db.exec($inpCode.value)[0];
       res && getResultTable(res);
     } catch (err) {
@@ -95,6 +95,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
-  const $btnRun = document.querySelector(".btn-run");
-  $btnRun.addEventListener("click", () => runSQL(db));
+  const $btnRun = document.querySelector('.run-btn');
+  $btnRun.addEventListener('click', () => runSQL(db));
 });

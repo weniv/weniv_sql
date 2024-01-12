@@ -1,7 +1,40 @@
 /* 케밥 메뉴 */
-.kebab-menu {
-  display: none;
+.additional-contents {
+  position: relative;
+
+  .btn-content.active + .content-dropdown {
+    display: flex;
+  }
+
+  .content-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    transform: translate(10%, 2%);
+    width: 24rem;
+    display: none;
+    flex-direction: column;
+    padding: 0.8rem 0;
+    border: 1px solid var(--ColorGrayLv2);
+    border-radius: 1rem;
+    box-shadow: var(--EffectShadow);
+
+    .menu-tit {
+      padding: 0.4rem 1.6rem;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      font-weight: 400;
+      color: var(--ColorGrayLv3);
+    }
+  }
 }
-.btn-kebab.active + .kebab-menu {
-  display: flex;
+
+.kebab-list {
+  .kebab-item {
+    padding: 1rem 2rem;
+    cursor: pointer;
+    &:hover {
+      background: var(--ColorActivation);
+    }
+  }
 }
