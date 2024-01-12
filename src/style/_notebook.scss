@@ -31,11 +31,11 @@
   line-height: 2rem;
 
   &::before {
-    content: "";
+    content: '';
     display: inline-block;
     width: 2rem;
     height: 2rem;
-    @include mask-image(var(--ColorPrimary), "../assets/icon/icon-plus.svg");
+    @include mask-image(var(--ColorPrimary), '../assets/icon/icon-plus.svg');
   }
 }
 
@@ -68,7 +68,7 @@
 }
 
 .ͼ1 .cm-scroller {
-  font-family: "Source Code Pro";
+  font-family: 'Source Code Pro';
   font-size: 1.6rem;
   font-weight: 500;
   border-radius: 0.8rem;
@@ -100,7 +100,7 @@
     }
 
     &.cm-activeLineGutter::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
