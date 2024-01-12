@@ -171,26 +171,35 @@
       </div>
     </header>
     <main class="main">
-      <section class="code-editor">
-        <h2 class="sr-only">코드 입력 및 실행</h2>
-        <div class="code-cont">
-          <span class="title">SQL Statement</span>
-          <textarea
-            name="sqlCode"
-            id="sqlCode"
-            cols="30"
-            rows="10"
-            class="code-inp"
-          ></textarea>
-          <div class="code-btns">
-            <button class="download-btn show-tooltip">
-              <span class="sr-only">코드 다운로드</span>
-            </button>
+      <div class="max-width">
+        <section class="code-editor">
+          <h2 class="sr-only">코드 입력 및 실행</h2>
+          <div class="code-cont">
+            <span class="title">SQL Statement</span>
+            <textarea
+              name="sqlCode"
+              id="sqlCode"
+              cols="30"
+              rows="10"
+              class="code-inp"
+            ></textarea>
+            <div class="code-btns">
+              <button class="btn-code-download show-tooltip">
+                <span class="sr-only">코드 다운로드</span>
+              </button>
+              <button class="btn-copy show-tooltip">
+                <span class="sr-only">코드 복사하기</span>
+              </button>
+              <div class="line"></div>
+              <button class="btn-reset show-tooltip">
+                <span class="sr-only">코드 초기화</span>
+              </button>
+            </div>
           </div>
           <button class="run-btn">Run SQL</button>
-        </div>
-      </section>
-      <section class="table-cont"></section>
+        </section>
+        <section class="table-cont"></section>
+      </div>
     </main>
     <footer class="footer">
       <div class="footer-content max-width">

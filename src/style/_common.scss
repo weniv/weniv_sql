@@ -127,6 +127,32 @@ button {
   }
 }
 
+/* copy 버튼 */
+.btn-copy {
+  width: 2rem;
+  height: 2rem;
+  @include mask-image(var(--ColorGrayLv3), '../assets/icon/icon-copy.svg');
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--ColorSurface);
+    }
+  }
+}
+
+/* code reset 버튼 */
+.btn-reset {
+  width: 2rem;
+  height: 2rem;
+  @include mask-image(var(--ColorGrayLv3), '../assets/icon/icon-reset.svg');
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--ColorSurface);
+    }
+  }
+}
+
 /* kebab 버튼 */
 .btn-kebab {
   width: 4.2rem;

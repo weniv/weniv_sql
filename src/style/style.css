@@ -303,6 +303,40 @@ button {
     .btn-code-download:hover {
       background: var(--ColorSurface); } }
 
+/* copy 버튼 */
+.btn-copy {
+  width: 2rem;
+  height: 2rem;
+  background: var(--ColorGrayLv3);
+  -webkit-mask-image: url("../assets/icon/icon-copy.svg");
+  -webkit-mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  mask-image: url("../assets/icon/icon-copy.svg");
+  mask-size: 100%;
+  mask-repeat: no-repeat;
+  mask-position: center center; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-copy:hover {
+      background: var(--ColorSurface); } }
+
+/* code reset 버튼 */
+.btn-reset {
+  width: 2rem;
+  height: 2rem;
+  background: var(--ColorGrayLv3);
+  -webkit-mask-image: url("../assets/icon/icon-reset.svg");
+  -webkit-mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  mask-image: url("../assets/icon/icon-reset.svg");
+  mask-size: 100%;
+  mask-repeat: no-repeat;
+  mask-position: center center; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-reset:hover {
+      background: var(--ColorSurface); } }
+
 /* kebab 버튼 */
 .btn-kebab {
   width: 4.2rem;
@@ -530,6 +564,49 @@ button {
   cursor: pointer; }
   .kebab-list .kebab-item:hover {
     background: var(--ColorActivation); }
+
+/* 코드 에디터 */
+.main {
+  padding: 3.2rem 0;
+  border-top: 1px solid var(--ColorGrayLv2); }
+
+.code-editor {
+  display: flex;
+  flex-direction: column;
+  position: relative; }
+  .code-editor .run-btn {
+    display: block;
+    padding: 1.1rem 2rem;
+    width: 16rem;
+    background-color: var(--ColorPrimary);
+    color: var(--ColorBackground);
+    border-radius: 1rem;
+    margin: 1.6rem 0 0 auto; }
+
+.code-cont {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  border: 1px solid var(--ColorGrayLv2); }
+  .code-cont .title {
+    padding: 1.5rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 2rem; }
+  .code-cont .code-inp {
+    border: none;
+    border-top: 1px solid var(--ColorGrayLv2);
+    background-color: var(--ColorGrayLv1); }
+  .code-cont .code-btns {
+    position: absolute;
+    right: 2rem;
+    top: 1.5rem;
+    display: flex;
+    gap: 1rem; }
+    .code-cont .code-btns .line {
+      width: 1px;
+      background-color: var(--ColorGrayLv2); }
 
 .notebook {
   display: flex;

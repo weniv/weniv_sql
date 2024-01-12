@@ -38,3 +38,57 @@
     }
   }
 }
+
+/* 코드 에디터 */
+.main {
+  padding: 3.2rem 0;
+  border-top: 1px solid var(--ColorGrayLv2);
+}
+.code-editor {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .run-btn {
+    display: block;
+    padding: 1.1rem 2rem;
+    width: 16rem;
+    background-color: var(--ColorPrimary);
+    color: var(--ColorBackground);
+    border-radius: 1rem;
+    margin: 1.6rem 0 0 auto;
+  }
+}
+
+.code-cont {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  border: 1px solid var(--ColorGrayLv2);
+
+  .title {
+    padding: 1.5rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 2rem;
+  }
+
+  .code-inp {
+    border: none;
+    border-top: 1px solid var(--ColorGrayLv2);
+    background-color: var(--ColorGrayLv1);
+  }
+  .code-btns {
+    position: absolute;
+    right: 2rem;
+    top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+
+    .line {
+      width: 1px;
+      background-color: var(--ColorGrayLv2);
+    }
+  }
+}
