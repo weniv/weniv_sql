@@ -22,11 +22,29 @@
     <meta name="twitter:url" content="https://sq.weniv.co.kr" />
 
     <title>Weniv SQL</title>
-    <link rel="stylesheet" href="./src/style/style.css" />
 
     <!-- JavaScript -->
+    <script src="./src/js/utils.js" defer></script>
+    <script src="./src/js/codemirror.js" defer></script>
     <script src="./src/js/event.js" defer></script>
+    <script src="./src/js/index.js" defer></script>
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./src/style/style.css" />
+
+    <!-- Codemirror -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/dracula.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <!-- CODEMIRROR HINT -->
     <!-- SQL -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.9.0/sql-wasm.js"
@@ -178,7 +196,7 @@
             <span class="title">SQL Statement</span>
             <textarea
               name="sqlCode"
-              id="sqlCode"
+              id="codeMirrorTextarea"
               cols="30"
               rows="10"
               class="code-inp"
@@ -198,7 +216,9 @@
           </div>
           <button class="run-btn">Run SQL</button>
         </section>
-        <section class="table-cont"></section>
+        <section class="table-cont">
+          <table></table>
+        </section>
       </div>
     </main>
     <footer class="footer">
@@ -327,6 +347,5 @@
         </ul>
       </div>
     </footer>
-    <script src="./src/js/index.js"></script>
   </body>
 </html>

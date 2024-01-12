@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const runSQL = (db) => {
     try {
-      const $inpCode = document.querySelector('.inp-code');
-      const res = db.exec($inpCode.value)[0];
+      const sqlStr = window.editor.getValue();
+      const res = db.exec(sqlStr)[0];
       res && getResultTable(res);
     } catch (err) {
       alert(err);

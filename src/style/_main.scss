@@ -68,6 +68,7 @@
   border: 1px solid var(--ColorGrayLv2);
 
   .title {
+    border-bottom: 1px solid var(--ColorGrayLv2);
     padding: 1.5rem 2rem;
     font-size: 1.4rem;
     font-weight: 600;
@@ -76,7 +77,6 @@
 
   .code-inp {
     border: none;
-    border-top: 1px solid var(--ColorGrayLv2);
     background-color: var(--ColorGrayLv1);
   }
   .code-btns {

@@ -193,6 +193,58 @@ img {
   --EffectShadow: 0px 8px 12px 0px rgba(18, 18, 18, 0.2),
         0px 8px 12px 0px rgba(18, 18, 18, 0.2); }
 
+.editor {
+  width: 100%;
+  font-size: 18px;
+  line-height: 180%; }
+
+.CodeMirror {
+  font-family: 'D2Coding';
+  width: 100%;
+  height: 224px;
+  background-color: transparent; }
+
+.cm-s-default .cm-keyword {
+  color: #5966ec;
+  font-size: 18px;
+  font-weight: 700; }
+
+.cm-s-default .cm-variable-2 {
+  color: #444444;
+  font-size: 18px; }
+
+.CodeMirror-hints {
+  padding: 5px;
+  border-radius: 9px;
+  font-family: 'D2Coding';
+  font-weight: 400;
+  font-size: 18px;
+  color: #6f6f6f;
+  background: #d9d9d9;
+  border: 0;
+  -webkit-box-shadow: 0px 0px 0px;
+  -moz-box-shadow: 0px 0px 0px;
+  box-shadow: 0px 0px 0px; }
+
+li.CodeMirror-hint-active {
+  background: #8993f5;
+  border-radius: 7px;
+  color: #fff;
+  font-size: 18px; }
+
+.CodeMirror-gutters {
+  border: 0; }
+
+.CodeMirror-scroll {
+  background-color: #f9f9fa; }
+
+.CodeMirror-linenumber {
+  text-align: left;
+  padding: 0 6px 0 0; }
+
+.CodeMirror-linenumbers {
+  background-color: #f9f9fa; }
+
 @keyframes fadeIn {
   from {
     opacity: 0; }
@@ -590,13 +642,13 @@ button {
   overflow: hidden;
   border: 1px solid var(--ColorGrayLv2); }
   .code-cont .title {
+    border-bottom: 1px solid var(--ColorGrayLv2);
     padding: 1.5rem 2rem;
     font-size: 1.4rem;
     font-weight: 600;
     line-height: 2rem; }
   .code-cont .code-inp {
     border: none;
-    border-top: 1px solid var(--ColorGrayLv2);
     background-color: var(--ColorGrayLv1); }
   .code-cont .code-btns {
     position: absolute;
