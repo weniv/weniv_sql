@@ -680,11 +680,6 @@ td {
       background-color: var(--ColorGrayLv2); }
 
 /* 결과창 */
-.cont-result {
-  overflow-x: auto;
-  margin-top: 4rem;
-  padding: 1.5rem 0; }
-
 .tab-list {
   display: flex;
   gap: 3.2rem;
@@ -705,6 +700,11 @@ td {
   display: none; }
   .panel-item.active {
     display: block; }
+
+.cont-result {
+  overflow-x: auto;
+  margin: 3.2rem auto;
+  padding: 0 2rem; }
 
 .notebook {
   display: flex;

@@ -216,11 +216,7 @@
           </div>
           <button class="run-btn">Run SQL</button>
         </section>
-        <section class="cont-table">
-          <div class="cont-result">
-            <table class="result-table"></table>
-          </div>
-        </section>
+        <section class="cont-table"></section>
         <ul class="tab-list" role="tablist">
           <li
             role="tab"
@@ -250,9 +246,9 @@
           id="panel-result"
           aria-labelledby="tab-result"
           aria-hidden="false"
-          class="panel-item active"
+          class="panel-item cont-result active"
         >
-          Result
+          <table class="result-table"></table>
         </section>
         <section
           role="tabpanel"
