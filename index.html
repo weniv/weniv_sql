@@ -27,7 +27,7 @@
     <script src="./src/js/utils.js" defer></script>
     <script src="./src/js/codemirror.js" defer></script>
     <script src="./src/js/event.js" defer></script>
-    <script src="./src/js/index.js" defer></script>
+    <script src="./src/js/db.js" defer></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./src/style/style.css" />
@@ -202,9 +202,9 @@
               class="code-inp"
             ></textarea>
             <div class="code-btns">
-              <button class="btn-code-download show-tooltip">
+              <!-- <button class="btn-code-download show-tooltip">
                 <span class="sr-only">코드 다운로드</span>
-              </button>
+              </button> -->
               <button class="btn-copy show-tooltip">
                 <span class="sr-only">코드 복사하기</span>
               </button>
@@ -216,8 +216,52 @@
           </div>
           <button class="run-btn">Run SQL</button>
         </section>
-        <section class="table-cont">
-          <table></table>
+        <section class="cont-table">
+          <div class="cont-result">
+            <table class="result-table"></table>
+          </div>
+        </section>
+        <ul class="tab-list" role="tablist">
+          <li
+            role="tab"
+            id="tab-result"
+            aria-controls="panel-result"
+            aria-selected="true"
+            tabindex="0"
+            onClick="changeTab('result')"
+            class="tab-item active"
+          >
+            <button type="button">Result</button>
+          </li>
+          <li
+            role="tab"
+            id="tab-sample"
+            aria-controls="panel-sample"
+            aria-selected="true"
+            tabindex="0"
+            onClick="changeTab('sample')"
+            class="tab-item"
+          >
+            <button type="button">Sample Data</button>
+          </li>
+        </ul>
+        <section
+          role="tabpanel"
+          id="panel-result"
+          aria-labelledby="tab-result"
+          aria-hidden="false"
+          class="panel-item active"
+        >
+          Result
+        </section>
+        <section
+          role="tabpanel"
+          id="panel-sample"
+          aria-labelledby="tab-sample"
+          aria-hidden="true"
+          class="panel-item"
+        >
+          Sample Data
         </section>
       </div>
     </main>

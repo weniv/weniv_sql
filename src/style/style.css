@@ -679,8 +679,32 @@ td {
       width: 1px;
       background-color: var(--ColorGrayLv2); }
 
-.table-cont {
-  overflow-x: auto; }
+/* 결과창 */
+.cont-result {
+  overflow-x: auto;
+  margin-top: 4rem;
+  padding: 1.5rem 0; }
+
+.tab-list {
+  display: flex;
+  gap: 3.2rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-weight: 400;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--ColorGrayLv2);
+  color: var(--ColorGrayLv2); }
+  .tab-list .tab-item button {
+    color: var(--ColorGrayLv2);
+    transition: all 0.2s; }
+  .tab-list .tab-item.active button {
+    color: var(--ColorPrimary);
+    font-weight: 600; }
+
+.panel-item {
+  display: none; }
+  .panel-item.active {
+    display: block; }
 
 .notebook {
   display: flex;

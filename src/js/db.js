@@ -12,7 +12,7 @@ const getModifiedType = (value) => {
 };
 
 const createTable = (db, tableName, columns, values) => {
-  console.log('columns', columns);
+  // console.log('columns', columns);
   const test = columns.map((column, index) => {
     return `column ${column}`;
   });
@@ -23,7 +23,7 @@ const createTable = (db, tableName, columns, values) => {
       return `${column} ${getModifiedType(values[0][idx])}`;
     })
     .join(', ')})`;
-  console.log(sqlStr);
+  // console.log(sqlStr);
   db.run(sqlStr);
 
   const stmt = db.prepare(
@@ -41,7 +41,7 @@ const getJsonToTable = async (db, file) => {
     },
   });
   const data = await response.json();
-  console.log('data', data);
+  // console.log('data', data);
   const columns = Object.keys(data[0]);
   const values = data.map((value) => Object.values(value));
 
@@ -52,8 +52,7 @@ const getResultTable = (data) => {
   const columns = data?.columns;
   const values = data?.values;
 
-  const $result = document.querySelector('.table-cont');
-  const table = $result.querySelector('table');
+  const table = document.querySelector('.result-table');
   table.innerHTML = '';
 
   const thead = document.createElement('thead');

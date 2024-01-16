@@ -84,7 +84,7 @@ const observerCallback = (entries, observer) => {
     if (entry.isIntersecting) {
       const intersectionRatio = entry.intersectionRatio;
       if (intersectionRatio < 1) {
-        console.log(entry.target);
+        // console.log(entry.target);
         resizeTooltip(entry.target, intersectionRatio);
       }
     } else {
@@ -163,3 +163,24 @@ const infoToggleButton = document.querySelector('.info-toggle-btn');
 infoToggleButton.addEventListener('click', () => {
   infoToggleButton.classList.toggle('active');
 });
+
+// Tab
+const changeTab = (tabId) => {
+  const tabs = document.querySelectorAll("[role='tab']");
+  tabs.forEach((tab) => {
+    tab.setAttribute('aria-selected', false);
+    tab.classList.remove('active');
+  });
+  const selectedTab = document.querySelector(`#tab-${tabId}`);
+  selectedTab.setAttribute('aria-selected', true);
+  selectedTab.classList.add('active');
+
+  const tabPanels = document.querySelectorAll("[role='tabpanel']");
+  tabPanels.forEach((panel) => {
+    panel.setAttribute('aria-hidden', true);
+    panel.classList.remove('active');
+  });
+  const selectedPanel = document.querySelector(`#panel-${tabId}`);
+  selectedPanel.setAttribute('aria-hidden', false);
+  selectedPanel.classList.add('active');
+};

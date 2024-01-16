@@ -7,23 +7,22 @@ resetBtn.addEventListener('click', (e) => {
 const copyBtn = document.querySelector('.btn-copy');
 copyBtn.addEventListener('click', (e) => {
   const copyCode = window.editor.getValue();
-  console.log('copyCode', copyCode);
   navigator.clipboard.writeText(copyCode).then((res) => {
     alert('코드가 클립보드에 복사되었습니다.');
   });
 });
 
-const downloadBtn = document.querySelector('.btn-code-download');
-downloadBtn.addEventListener('click', (e) => {
-  const downloadCode = window.editor.getValue();
-  // sql 파일로 다운로드
-  const blob = new Blob([downloadCode], { type: 'text/plain' });
-  const url = window.URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `${dateFormat()}.sql`;
-  a.click();
-});
+/* 다운로드 기능 미제공으로 삭제 */
+// const downloadBtn = document.querySelector('.btn-code-download');
+// downloadBtn.addEventListener('click', (e) => {
+//   const downloadCode = window.editor.getValue();
+//   const blob = new Blob([downloadCode], { type: 'text/plain' });
+//   const url = window.URL.createObjectURL(blob);
+//   const a = document.createElement('a');
+//   a.href = url;
+//   a.download = `${dateFormat()}.sql`;
+//   a.click();
+// });
 
 const addStatement = (sqlSyntax) => {
   const DEFAULT_SQL_VALUES = {
@@ -119,21 +118,4 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   );
   window.editor.setValue('SELECT * FROM test;');
-
-  CodeMirror.commands.autocomplete = function (cm) {
-    CodeMirror.showHint(cm, CodeMirror.hint.sql, {
-      tables: AUTOCOMPLETE_TABLES,
-      completeSingle: false, // 자동으로 텍스트 완성 해제
-    });
-  };
-
-  window.editor.on('keyup', function (cm, event) {
-    if (
-      (!event.ctrlKey && event.keyCode >= 65 && event.keyCode <= 90) ||
-      (event.keyCode >= 97 && event.keyCode <= 122) ||
-      (event.keyCode >= 46 && event.keyCode <= 57)
-    ) {
-      CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
-    }
-  });
 });
