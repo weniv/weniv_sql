@@ -323,8 +323,8 @@ button {
 
 /* file download 버튼 */
 .btn-download {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
   background: var(--ColorGrayLv3);
   -webkit-mask-image: url("../assets/icon/icon-file-download.svg");
   -webkit-mask-size: 100%;
@@ -679,7 +679,7 @@ td {
       width: 1px;
       background-color: var(--ColorGrayLv2); }
 
-/* 결과창 */
+/* Result */
 .tab-list {
   display: flex;
   gap: 3.2rem;
@@ -699,12 +699,43 @@ td {
 .panel-item {
   display: none; }
   .panel-item.active {
-    display: block; }
+    display: flex; }
 
 .cont-result {
   overflow-x: auto;
   margin: 3.2rem auto;
   padding: 0 2rem; }
+
+/* Sample Data */
+.cont-sample .table-list {
+  padding: 1.6rem 0;
+  border-right: 1px solid var(--ColorGrayLv2);
+  margin-right: 1rem;
+  width: 25%;
+  min-width: 20rem;
+  max-width: 24rem;
+  gap: 2rem; }
+  .cont-sample .table-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.6rem 0.9rem 2rem;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    font-weight: 400;
+    white-space: nowrap;
+    word-break: keep-all;
+    cursor: pointer; }
+    .cont-sample .table-list li:hover {
+      background-color: var(--ColorActivation); }
+    .cont-sample .table-list li.selected {
+      background-color: var(--ColorActivation); }
+
+.cont-sample .data-table {
+  overflow-x: auto;
+  padding: 3.2rem 0; }
+  .cont-sample .data-table table {
+    margin-left: 2.2rem; }
 
 .notebook {
   display: flex;

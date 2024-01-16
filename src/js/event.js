@@ -184,3 +184,88 @@ const changeTab = (tabId) => {
   selectedPanel.setAttribute('aria-hidden', false);
   selectedPanel.classList.add('active');
 };
+
+// Sample Data
+const getFileData = async (tableId) => {
+  const response = await fetch(`./src/data/${tableId}.json`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  });
+  const data = await response.json();
+  console.log(data);
+  const columns = Object.keys(data[0]);
+  const values = data.map((value) => Object.values(value));
+
+  showSampleData(tableId, columns, values);
+};
+
+const showSampleData = (tableId, columns, values) => {
+  const table = document.querySelector('.data-table table');
+  table.innerHTML = '';
+
+  const thead = document.createElement('thead');
+  const tbody = document.createElement('tbody');
+
+  const tr = document.createElement('tr');
+  columns.forEach((column) => {
+    const th = document.createElement('th');
+    th.textContent = column;
+    tr.appendChild(th);
+  });
+  thead.appendChild(tr);
+  table.appendChild(thead);
+
+  values.forEach((value, index) => {
+    const tr = document.createElement('tr');
+
+    value.forEach((v) => {
+      const td = document.createElement('td');
+      td.textContent = v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+};
+
+const downloadJson = (table) => {
+  const a = document.createElement('a');
+  a.href = `./src/data/${table}.json`;
+  a.download = `${table}.json`;
+  a.click();
+};
+
+const tableList = [
+  'test',
+  // 'product',
+  // 'customer',
+  // 'order',
+  // 'orderDeatail',
+  // 'category',
+  // 'supply',
+];
+const $tableListCont = document.querySelector('.table-list');
+const docFrag = document.createDocumentFragment();
+tableList.forEach((table) => {
+  const li = document.createElement('li');
+  li.textContent = table;
+  li.addEventListener('click', () => {
+    getFileData(table);
+    // 다른 li 선택 해제
+    const selectedLi = document.querySelector('.table-list .selected');
+    selectedLi && selectedLi.classList.remove('selected');
+    li.classList.add('selected');
+  });
+  const btn = document.createElement('button');
+  btn.classList.add('btn-download');
+  btn.innerHTML = `<span class="sr-only">JSON 파일 다운로드</span>`;
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    downloadJson(table);
+  });
+  li.appendChild(btn);
+  docFrag.appendChild(li);
+});
+$tableListCont.appendChild(docFrag);

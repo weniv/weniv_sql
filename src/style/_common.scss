@@ -97,8 +97,8 @@ button {
 
 /* file download 버튼 */
 .btn-download {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
   @include mask-image(
     var(--ColorGrayLv3),
     '../assets/icon/icon-file-download.svg'
