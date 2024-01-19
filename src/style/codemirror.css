@@ -37,11 +37,11 @@ pre.CodeMirror-line {
   }
 }
 
-/*  */
-/* .cm-s-default .cm-keyword {
-  color: #5966ec;
+.cm-s-default .cm-keyword {
+  color: var(--ColorCodeOrange);
   font-weight: 700;
+  font-size: 1.6rem;
 }
 .cm-s-default .cm-variable-2 {
   color: #444444;
-} */
+}

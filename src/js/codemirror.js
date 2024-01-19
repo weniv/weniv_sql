@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.editor = CodeMirror.fromTextArea(
     document.getElementById('codeMirrorTextarea'),
     {
-      mode: 'text/x-sqlite',
+      mode: 'text/x-sql',
       indentWithTabs: true,
       smartIndent: true,
       lineNumbers: true,

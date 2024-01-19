@@ -149,12 +149,6 @@ img {
   display: block;
   max-width: 100%; }
 
-:root {
-  --ColorBtnSurface: #fff;
-  --ColorWallGray: #959ea6;
-  --ColorWallBlue: #4b7af2;
-  --ColorWallGreen: #53cb42; }
-
 :root,
 :root[color-theme='light'] {
   --ColorPrimary: #2f6ff2;
@@ -191,7 +185,7 @@ img {
   --ColorCodeGreen: #50c140;
   --ColorCodeOrange: #ffa52a;
   --EffectShadow: 0px 8px 12px 0px rgba(18, 18, 18, 0.2),
-        0px 8px 12px 0px rgba(18, 18, 18, 0.2); }
+    0px 8px 12px 0px rgba(18, 18, 18, 0.2); }
 
 .editor {
   width: 100%;
