@@ -73,6 +73,9 @@ const getResultTable = (data) => {
   const columns = data?.columns;
   const values = data?.values;
 
+  const errorMsg = document.querySelector('.error-msg');
+  errorMsg.classList.add('hidden');
+
   const table = document.querySelector('.result-table');
   table.innerHTML = '';
 
@@ -101,6 +104,14 @@ const getResultTable = (data) => {
   table.appendChild(tbody);
 };
 
+const showErrorMessage = (err) => {
+  const table = document.querySelector('.result-table');
+  // table.classList.add('hidden');
+  const errorMsg = document.querySelector('.error-msg');
+  errorMsg.classList.remove('hidden');
+  errorMsg.textContent = err;
+};
+
 document.addEventListener('DOMContentLoaded', async () => {
   const SQL = await initSqlJs({
     locateFile: (file) => `https://sql.js.org/dist/${file}`,
@@ -119,7 +130,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const res = db.exec(sqlStr)[0];
       res && getResultTable(res);
     } catch (err) {
-      alert(err);
+      showErrorMessage(err);
     }
   };
 

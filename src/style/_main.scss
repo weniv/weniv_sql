@@ -123,6 +123,10 @@
     display: flex;
   }
 }
+#panel-result {
+  flex-direction: column;
+  gap: 2rem;
+}
 
 .cont-result {
   overflow-x: auto;

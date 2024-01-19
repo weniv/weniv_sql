@@ -337,6 +337,9 @@ table {
   line-height: 2.2rem;
   font-weight: 400;
 }
+table.hidden {
+  display: none;
+}
 thead {
   font-weight: 500;
   background-color: var(--ColorGrayLv1);
@@ -346,4 +349,32 @@ td {
   padding: 1rem 1.6rem;
   white-space: nowrap;
   border: 1px solid var(--ColorGrayLv2);
+}
+
+/* Error Message */
+.error-msg {
+  display: block;
+  border: 2px solid var(--ColorError);
+  width: auto;
+  text-align: left;
+  padding: 1.5rem;
+  border-radius: 0.8rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  &::before {
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    content: '';
+    @include mask-image(
+      var(--ColorError),
+      '../assets/icon/icon-alert-circle.svg'
+    );
+  }
+}
+.error-msg.hidden {
+  display: none;
 }

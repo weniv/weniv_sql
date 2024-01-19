@@ -259,3 +259,5 @@ tableList.forEach((table) => {
   docFrag.appendChild(li);
 });
 $tableListCont.appendChild(docFrag);
+
+/* Toast */
