@@ -112,6 +112,7 @@ const createTooltip = (textContent) => {
 };
 
 const addTooltip = (target) => {
+  console.log('add tooltip');
   const textContent = target.dataset.tooltip;
 
   if (textContent) {
@@ -165,6 +166,7 @@ infoToggleButton.addEventListener('click', () => {
 
 // Tab
 const changeTab = (tabId) => {
+  console.log('changeTab');
   const tabs = document.querySelectorAll("[role='tab']");
   tabs.forEach((tab) => {
     tab.setAttribute('aria-selected', false);

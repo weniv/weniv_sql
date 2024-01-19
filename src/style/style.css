@@ -638,6 +638,7 @@ td {
   .additional-contents .btn-content.active + .content-dropdown {
     display: flex; }
   .additional-contents .content-dropdown {
+    background-color: var(--ColorBackground);
     position: absolute;
     top: 100%;
     right: 50%;

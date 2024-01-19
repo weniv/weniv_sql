@@ -125,5 +125,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   const $btnRun = document.querySelector('.run-btn');
-  $btnRun.addEventListener('click', () => runSQL(db));
+  $btnRun.addEventListener('click', () => {
+    changeTab('result');
+    runSQL(db);
+  });
 });
