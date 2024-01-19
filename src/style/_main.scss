@@ -140,6 +140,7 @@
     min-width: 20rem;
     max-width: 24rem;
     gap: 2rem;
+    flex-shrink: 0;
 
     li {
       display: flex;
@@ -153,7 +154,7 @@
       word-break: keep-all;
       cursor: pointer;
       &:hover {
-        background-color: var(--ColorActivation);
+        background-color: var(--ColorGrayLv1);
       }
       &.selected {
         background-color: var(--ColorActivation);
@@ -164,8 +165,7 @@
   .data-table {
     overflow-x: auto;
     padding: 3.2rem 0;
-    table {
-      margin-left: 2.2rem;
-    }
+    margin-left: 2.2rem;
+    flex: 1;
   }
 }

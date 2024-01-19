@@ -714,7 +714,8 @@ td {
   width: 25%;
   min-width: 20rem;
   max-width: 24rem;
-  gap: 2rem; }
+  gap: 2rem;
+  flex-shrink: 0; }
   .cont-sample .table-list li {
     display: flex;
     justify-content: space-between;
@@ -727,15 +728,15 @@ td {
     word-break: keep-all;
     cursor: pointer; }
     .cont-sample .table-list li:hover {
-      background-color: var(--ColorActivation); }
+      background-color: var(--ColorGrayLv1); }
     .cont-sample .table-list li.selected {
       background-color: var(--ColorActivation); }
 
 .cont-sample .data-table {
   overflow-x: auto;
-  padding: 3.2rem 0; }
-  .cont-sample .data-table table {
-    margin-left: 2.2rem; }
+  padding: 3.2rem 0;
+  margin-left: 2.2rem;
+  flex: 1; }
 
 .footer {
   padding: 6rem 0;
