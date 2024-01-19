@@ -30,7 +30,6 @@ const createTable = (db, file, columns, values) => {
       return `${column} ${getModifiedType(values[0][idx])}`;
     })
     .join(', ')})`;
-  console.log('sqlStr >', sqlStr);
   db.run(sqlStr);
 
   const stmt = db.prepare(
@@ -48,7 +47,6 @@ const getJsonToTable = async (db, file) => {
     },
   });
   const data = await response.json();
-  // console.log('data', data);
   const columns = Object.keys(data[0]);
   const values = data.map((value) => Object.values(value));
 
@@ -64,7 +62,6 @@ const getFolderToTable = async (db) => {
   })
     .then((res) => res.json())
     .then((files) => {
-      console.log('files', files);
       files.forEach((file) => {
         // file명에서 확장자 제거
         getJsonToTable(db, file);

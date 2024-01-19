@@ -1,11 +1,47 @@
-.editor {
-  width: 100%;
-  font-size: 1.6rem;
-}
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
 
 .CodeMirror {
+  font-family: 'Source Code Pro', monospace;
   width: 100%;
-  height: 264px;
+  height: 224px;
   padding: 1.2rem 0;
-  background: var(--ColorGrayLv1);
+  background: var(--ColorGrayLv1) !important;
 }
+.CodeMirror-scroll,
+.CodeMirror-gutters,
+.CodeMirror-linenumbers {
+  background-color: transparent !important;
+  color: var(--ColorSurface);
+}
+.CodeMirror-gutters {
+  border: none !important;
+}
+
+.CodeMirror-sizer {
+  margin-left: 6.5rem !important;
+}
+.CodeMirror-linenumber {
+  color: var(--ColorGrayLv3) !important;
+  padding: 0.8rem 0 0.8rem 3rem !important;
+  text-align: center !important;
+}
+pre.CodeMirror-line {
+  padding: 0.8rem !important;
+}
+.CodeMirror-cursors {
+  display: flex;
+
+  .CodeMirror-cursor {
+    height: 2.4rem !important;
+    transform: translateY(40%);
+  }
+}
+
+/*  */
+/* .cm-s-default .cm-keyword {
+  color: #5966ec;
+  font-weight: 700;
+}
+.cm-s-default .cm-variable-2 {
+  color: #444444;
+} */
