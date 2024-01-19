@@ -84,7 +84,6 @@ const observerCallback = (entries, observer) => {
     if (entry.isIntersecting) {
       const intersectionRatio = entry.intersectionRatio;
       if (intersectionRatio < 1) {
-        // console.log(entry.target);
         resizeTooltip(entry.target, intersectionRatio);
       }
     } else {
@@ -194,7 +193,6 @@ const getFileData = async (tableId) => {
     },
   });
   const data = await response.json();
-  console.log(data);
   const columns = Object.keys(data[0]);
   const values = data.map((value) => Object.values(value));
 
