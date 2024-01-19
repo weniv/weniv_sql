@@ -117,5 +117,5 @@ document.addEventListener('DOMContentLoaded', () => {
       theme: 'monokai',
     },
   );
-  window.editor.setValue('SELECT * FROM test;');
+  window.editor.setValue('SELECT * FROM 상품;');
 });

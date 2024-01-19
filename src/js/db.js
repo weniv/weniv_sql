@@ -1,19 +1,26 @@
 const getModifiedType = (value) => {
   switch (typeof value) {
-    case 'string':
-      return 'TEXT';
     case 'number':
       return Number.isInteger(value) ? 'INTEGER' : 'REAL';
     case 'boolean':
       return 'INTEGER';
+    case 'string':
+      return 'TEXT';
+    case 'object':
+      if (value instanceof Array || value instanceof Uint8Array) {
+        return 'BLOB';
+      }
+    case 'null':
+      return 'NULL';
     default:
       return 'TEXT';
   }
 };
 
-const createTable = (db, tableName, columns, values) => {
-  // console.log('columns', columns);
-  const test = columns.map((column, index) => {
+const createTable = (db, file, columns, values) => {
+  const tableName = file.replace(/\.[^/.]+$/, '');
+
+  columns.map((column, index) => {
     return `column ${column}`;
   });
 
@@ -23,7 +30,7 @@ const createTable = (db, tableName, columns, values) => {
       return `${column} ${getModifiedType(values[0][idx])}`;
     })
     .join(', ')})`;
-  // console.log(sqlStr);
+  console.log('sqlStr >', sqlStr);
   db.run(sqlStr);
 
   const stmt = db.prepare(
@@ -34,7 +41,7 @@ const createTable = (db, tableName, columns, values) => {
 };
 
 const getJsonToTable = async (db, file) => {
-  const response = await fetch(`./src/data/${file}.json`, {
+  const response = await fetch(`./src/data/${file}`, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -46,6 +53,23 @@ const getJsonToTable = async (db, file) => {
   const values = data.map((value) => Object.values(value));
 
   createTable(db, file, columns, values);
+};
+
+const getFolderToTable = async (db) => {
+  await fetch('./src/data/', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  })
+    .then((res) => res.json())
+    .then((files) => {
+      console.log('files', files);
+      files.forEach((file) => {
+        // file명에서 확장자 제거
+        getJsonToTable(db, file);
+      });
+    });
 };
 
 const getResultTable = (data) => {
@@ -87,9 +111,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   const db = new SQL.Database();
 
   // set use database
-  const tableList = ['test'];
+  const tableList = ['category'];
 
-  await Promise.all(tableList.map((file) => getJsonToTable(db, file)));
+  // await Promise.all(tableList.map((file) => getJsonToTable(db, file)));
+  await getFolderToTable(db);
 
   const runSQL = (db) => {
     try {
