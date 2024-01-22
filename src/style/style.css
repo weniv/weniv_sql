@@ -677,7 +677,7 @@ td {
     padding: 1.1rem 2rem;
     width: 16rem;
     background-color: var(--ColorPrimary);
-    color: var(--ColorBackground);
+    color: #fff;
     border-radius: 1rem;
     margin: 1.6rem 0 0 auto; }
 
@@ -722,6 +722,8 @@ td {
   .tab-list .tab-item.active button {
     color: var(--ColorPrimary);
     font-weight: 600; }
+  .tab-list .tab-item :hover {
+    color: var(--ColorPrimary); }
 
 .panel-item {
   display: none; }
