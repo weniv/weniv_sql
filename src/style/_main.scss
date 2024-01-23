@@ -32,6 +32,12 @@
 
 .kebab-list {
   .kebab-item {
+    width: 24rem;
+    overflow: hidden;
+  }
+
+  .kebab-item a {
+    width: 100%;
     padding: 1rem 2rem;
     cursor: pointer;
     &:hover {

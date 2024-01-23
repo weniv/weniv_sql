@@ -658,9 +658,14 @@ td {
       color: var(--ColorGrayLv3); }
 
 .kebab-list .kebab-item {
+  width: 24rem;
+  overflow: hidden; }
+
+.kebab-list .kebab-item a {
+  width: 100%;
   padding: 1rem 2rem;
   cursor: pointer; }
-  .kebab-list .kebab-item:hover {
+  .kebab-list .kebab-item a:hover {
     background: var(--ColorActivation); }
 
 /* 코드 에디터 */
