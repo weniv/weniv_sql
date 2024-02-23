@@ -238,6 +238,9 @@ li.CodeMirror-hint-active {
 .CodeMirror-linenumbers {
   background-color: #f9f9fa; }
 
+.CodeMirror-cursor {
+  border-left: 1px solid var(--ColorSurface) !important; }
+
 @keyframes fadeIn {
   from {
     opacity: 0; }
