@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.editor.setValue('SELECT * FROM 상품;');
 
   window.editor.on('keydown', (cm, event) => {
+    // Shift+ Enter이면 코드 실행
+    if (event.keyCode === 13 && event.shiftKey) {
+      const runBtn = document.querySelector('.run-btn');
+      runBtn.click();
+    }
     if (
       (event.keyCode >= 65 && event.keyCode <= 90) ||
       (event.keyCode >= 97 && event.keyCode <= 122) ||
