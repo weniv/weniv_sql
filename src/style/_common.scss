@@ -130,10 +130,17 @@ button {
 .btn-copy {
   width: 2rem;
   height: 2rem;
-  @include mask-image(var(--ColorGrayLv3), '../assets/icon/icon-copy.svg');
+  display: flex;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    @include mask-image(var(--ColorGrayLv3), '../assets/icon/icon-copy.svg');
+  }
 
   @media (hover: hover) and (pointer: fine) {
-    &:hover {
+    &:hover::after {
       background: var(--ColorSurface);
     }
   }
@@ -143,9 +150,16 @@ button {
 .btn-reset {
   width: 2rem;
   height: 2rem;
-  @include mask-image(var(--ColorGrayLv3), '../assets/icon/icon-reset.svg');
+  display: flex;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    @include mask-image(var(--ColorGrayLv3), '../assets/icon/icon-reset.svg');
+  }
   @media (hover: hover) and (pointer: fine) {
-    &:hover {
+    &:hover::after {
       background: var(--ColorSurface);
     }
   }

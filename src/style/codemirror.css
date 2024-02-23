@@ -28,13 +28,13 @@
 pre.CodeMirror-line {
   padding: 0.8rem !important;
 }
-.CodeMirror-cursors {
-  display: flex;
+.CodeMirror-cursor {
+  height: 2.4rem !important;
+  transform: translateY(40%);
+}
 
-  .CodeMirror-cursor {
-    height: 2.4rem !important;
-    transform: translateY(40%);
-  }
+.CodeMirror-cursor {
+  pointer-events: all !important;
 }
 
 .cm-s-default .cm-keyword {

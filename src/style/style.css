@@ -352,34 +352,44 @@ button {
 .btn-copy {
   width: 2rem;
   height: 2rem;
-  background: var(--ColorGrayLv3);
-  -webkit-mask-image: url("../assets/icon/icon-copy.svg");
-  -webkit-mask-size: 100%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center center;
-  mask-image: url("../assets/icon/icon-copy.svg");
-  mask-size: 100%;
-  mask-repeat: no-repeat;
-  mask-position: center center; }
+  display: flex; }
+  .btn-copy::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: var(--ColorGrayLv3);
+    -webkit-mask-image: url("../assets/icon/icon-copy.svg");
+    -webkit-mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-image: url("../assets/icon/icon-copy.svg");
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center center; }
   @media (hover: hover) and (pointer: fine) {
-    .btn-copy:hover {
+    .btn-copy:hover::after {
       background: var(--ColorSurface); } }
 
 /* code reset 버튼 */
 .btn-reset {
   width: 2rem;
   height: 2rem;
-  background: var(--ColorGrayLv3);
-  -webkit-mask-image: url("../assets/icon/icon-reset.svg");
-  -webkit-mask-size: 100%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center center;
-  mask-image: url("../assets/icon/icon-reset.svg");
-  mask-size: 100%;
-  mask-repeat: no-repeat;
-  mask-position: center center; }
+  display: flex; }
+  .btn-reset::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: var(--ColorGrayLv3);
+    -webkit-mask-image: url("../assets/icon/icon-reset.svg");
+    -webkit-mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-image: url("../assets/icon/icon-reset.svg");
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center center; }
   @media (hover: hover) and (pointer: fine) {
-    .btn-reset:hover {
+    .btn-reset:hover::after {
       background: var(--ColorSurface); } }
 
 /* kebab 버튼 */
@@ -632,6 +642,10 @@ td {
   left: 50%;
   transform: translateX(-50%); }
 
+body,
+html {
+  cursor: default !important; }
+
 /* 케밥 메뉴 */
 .additional-contents {
   position: relative; }
@@ -690,7 +704,6 @@ td {
   display: flex;
   flex-direction: column;
   border-radius: 0.8rem;
-  overflow: hidden;
   border: 1px solid var(--ColorGrayLv2); }
   .code-cont .title {
     border-bottom: 1px solid var(--ColorGrayLv2);

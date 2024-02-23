@@ -112,7 +112,6 @@ const createTooltip = (textContent) => {
 };
 
 const addTooltip = (target) => {
-  console.log('add tooltip');
   const textContent = target.dataset.tooltip;
 
   if (textContent) {
