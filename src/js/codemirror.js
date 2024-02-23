@@ -12,27 +12,6 @@ copyBtn.addEventListener('click', (e) => {
   });
 });
 
-CodeMirror.commands.autocomplete = function (cm) {
-  CodeMirror.showHint(cm, CodeMirror.hint.sql, {
-    tables: {
-      상품: [
-        '상품ID',
-        '상품명',
-        '카테고리ID',
-        '가격',
-        '재고',
-        '설명',
-        '공급업체ID',
-      ],
-      카테고리: ['카테고리ID', '카테고리명'],
-      고객: ['고객ID', '이름', '이메일', '연락처', '주소', '가입일'],
-      주문: ['주문ID', '고객ID', '주문날짜', '배송주소', '총주문금액'],
-      주문상세: ['주문상세ID', '주문ID', '상품ID', '수량', '단가'],
-      공급업체: ['공급업체ID', '회사명', '연락처', '주소'],
-    },
-  });
-};
-
 document.addEventListener('DOMContentLoaded', () => {
   window.editor = CodeMirror.fromTextArea(
     document.getElementById('codeMirrorTextarea'),
@@ -43,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
       lineNumbers: true,
       matchBrackets: true,
       autofocus: true,
-      extraKeys: { Tab: 'autocomplete' },
+      //extraKeys: { Tab: 'autocomplete' },
     },
   );
-  window.editor.setValue('SELECT * FROM 상품;');
+  window.editor.setValue('SELECT * FROM product;');
 
   window.editor.on('keyup', (cm, event) => {
     if (
@@ -54,7 +33,31 @@ document.addEventListener('DOMContentLoaded', () => {
       (event.keyCode >= 97 && event.keyCode <= 122) ||
       (event.keyCode >= 46 && event.keyCode <= 57)
     ) {
-      //CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
+      CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
     }
   });
 });
+
+const SQLTableList = {
+  product: [
+    '상품ID',
+    '상품명',
+    '카테고리ID',
+    '가격',
+    '재고',
+    '설명',
+    '공급업체ID',
+  ],
+  category: ['카테고리ID', '카테고리명'],
+  customer: ['고객ID', '이름', '이메일', '연락처', '주소', '가입일'],
+  purchase: ['주문ID', '고객ID', '주문날짜', '배송주소', '총주문금액'],
+  purchaseDetail: ['주문상세ID', '주문ID', '상품ID', '수량', '단가'],
+  supply: ['공급업체ID', '회사명', '연락처', '주소'],
+};
+
+CodeMirror.commands.autocomplete = function (cm) {
+  CodeMirror.showHint(cm, CodeMirror.hint.sql, {
+    tables: SQLTableList,
+    completeSingle: false,
+  });
+};

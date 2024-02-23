@@ -606,6 +606,24 @@ td {
 .error-msg.hidden {
   display: none; }
 
+.CodeMirror-hints {
+  border-radius: 9px;
+  font-family: 'D2Coding';
+  font-weight: 400;
+  font-size: 18px;
+  color: #6f6f6f;
+  background: #d9d9d9;
+  border: 0;
+  -webkit-box-shadow: 0px 0px 0px;
+  -moz-box-shadow: 0px 0px 0px;
+  box-shadow: 0px 0px 0px; }
+
+li.CodeMirror-hint-active {
+  background: var(--ColorPrimary);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 18px; }
+
 .header {
   position: sticky;
   height: 7rem;

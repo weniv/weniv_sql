@@ -236,7 +236,14 @@ const downloadJson = (table) => {
   a.click();
 };
 
-const tableList = ['상품', '카테고리', '고객', '주문', '주문상세', '공급업체'];
+const tableList = [
+  'product',
+  'category',
+  'customer',
+  'purchase',
+  'purchaseDetail',
+  'supply',
+];
 const $tableListCont = document.querySelector('.table-list');
 const docFrag = document.createDocumentFragment();
 tableList.forEach((table) => {
@@ -260,5 +267,3 @@ tableList.forEach((table) => {
   docFrag.appendChild(li);
 });
 $tableListCont.appendChild(docFrag);
-
-/* Toast */

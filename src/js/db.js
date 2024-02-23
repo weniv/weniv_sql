@@ -104,12 +104,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // set use database
   const tableList = [
-    '상품',
-    '카테고리',
-    '고객',
-    '주문',
-    '주문상세',
-    '공급업체',
+    'product',
+    'category',
+    'customer',
+    'purchase',
+    'purchaseDetail',
+    'supply',
   ];
 
   await Promise.all(tableList.map((file) => getJsonToTable(db, file)));
