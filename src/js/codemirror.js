@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
   window.editor = CodeMirror.fromTextArea(
     document.getElementById('codeMirrorTextarea'),
     {
-      mode: 'text/x-sql',
+      mode: 'text/x-sqlite',
       indentWithTabs: true,
       smartIndent: true,
       lineNumbers: true,
       matchBrackets: true,
       autofocus: true,
-      //extraKeys: { Tab: 'autocomplete' },
+      extraKeys: { Tab: 'autocomplete' },
     },
   );
   window.editor.setValue('SELECT * FROM 상품;');
@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const runBtn = document.querySelector('.run-btn');
       runBtn.click();
     }
+    // a~z, 1~F12, delete~9
     if (
       (event.keyCode >= 65 && event.keyCode <= 90) ||
       (event.keyCode >= 97 && event.keyCode <= 122) ||
