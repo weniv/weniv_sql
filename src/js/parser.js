@@ -80,6 +80,14 @@
     regex: /^\s*!\[(.*)\]\((.+)\)/,
     replace: (_, g1, g2) => {
       const width = g2.match(/_{2}(\d+)\..+$/)?.[1];
+      const img = `<figure><img src="${
+        window.location.origin
+      }/pagetutorial/img/${PAGE_NAME}/${g2}"${
+        width ? ` style="width: ${width}px;"` : ''
+      }>${g1 ? `<figcaption>${g1}</figcaption>` : ''}</figure>`;
+
+      console.log('img', img);
+
       return `<figure><img src="${
         window.location.origin
       }/pagetutorial/img/${PAGE_NAME}/${g2}"${
