@@ -1100,13 +1100,13 @@ html {
 .tutorial-header {
   position: fixed;
   width: 100%;
-  background-color: #ffffff;
+  background-color: var(--ColorBackground);
 }
 
 .scroll-bar {
   width: 100%;
   height: 4px;
-  background-color: #d9dbe0;
+  background-color: var(--ColorGrayLv2);
 }
 
 .tutorial-wrap {
@@ -1120,7 +1120,7 @@ aside {
   height: calc(100vh - 7rem);
   left: 0;
   overflow-y: scroll;
-  border-right: 1px solid #d9dbe0;
+  border-right: 1px solid var(--ColorGrayLv2);
   box-sizing: border-box;
 }
 aside::-webkit-scrollbar {
@@ -1128,7 +1128,7 @@ aside::-webkit-scrollbar {
 }
 aside::-webkit-scrollbar-thumb {
   margin-top: 10rem;
-  background-color: #8d9299;
+  background-color: var(--ColorGrayLv3);
   width: 6px;
   border-radius: 6px;
   min-height: 50px;
@@ -1142,7 +1142,7 @@ aside::-webkit-scrollbar-track {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #ffffff;
+  background-color: var(--ColorBackground);
   align-items: center;
   overflow-y: scroll;
   padding: 0 clamp(2.4rem, 7.5520833333vw, 14.5rem) clamp(3.2rem, 5.2083333333vw, 10rem) clamp(2.4rem, 7.5520833333vw, 14.5rem);
@@ -1152,7 +1152,7 @@ aside::-webkit-scrollbar-track {
   width: 6px;
 }
 .tutorial-content::-webkit-scrollbar-thumb {
-  background-color: #8d9299;
+  background-color: var(--ColorGrayLv3);
   width: 6px;
   border-radius: 6px;
   min-height: 50px;
@@ -1199,7 +1199,7 @@ aside::-webkit-scrollbar-track {
   box-sizing: border-box;
 }
 .list-item summary:hover {
-  background-color: #dee8ff;
+  background-color: var(--ColorActivation);
 }
 .list-item summary::-webkit-details-marker {
   display: block;
@@ -1223,15 +1223,15 @@ aside::-webkit-scrollbar-track {
   font-size: 1.6rem;
 }
 .subtit-drawer-menu > li:hover {
-  background-color: #dee8ff;
+  background-color: var(--ColorActivation);
 }
 .subtit-drawer-menu > li a {
   width: 100%;
 }
 
 .active-menu {
-  background-color: #f3f5fa;
-  color: #2e6ff2;
+  background-color: var(--ColorGrayLv1);
+  color: var(--ColorPrimary);
   font-weight: 700;
 }
 
@@ -1239,7 +1239,7 @@ h2.tuto-title {
   font-weight: 700;
   font-size: 4rem;
   line-height: 4.7rem;
-  border-bottom: 2px solid #d9dbe0;
+  border-bottom: 2px solid var(--ColorGrayLv2);
   padding-bottom: clamp(1.6rem, 1.0416666667vw, 20rem);
   margin-top: clamp(3.2rem, 5.2083333333vw, 10rem);
   margin-bottom: clamp(2rem, 1.5625vw, 3.2rem);
@@ -1267,21 +1267,21 @@ h4.tuto-sec-subtitle {
   font-weight: 700;
 }
 .tutorial-wrap pre {
-  background-color: #f3f5fa;
+  background-color: var(--ColorGrayLv1);
   padding: 3.2rem 6rem 3.2rem 3.2rem;
   box-sizing: border-box;
   border-radius: 1rem;
   margin: 0.9rem 0;
 }
 .tutorial-wrap pre code {
-  color: #000;
+  color: var(--ColorSurface);
   background-color: transparent;
 }
 .tutorial-wrap code {
   padding: 0.1rem 0.3em;
   border-radius: 0.2em;
-  background-color: #dee8ff;
-  color: #2e6ff2;
+  background-color: var(--ColorActivation);
+  color: var(--ColorPrimary);
   font-weight: 500;
 }
 .tutorial-wrap figcaption {
@@ -1294,14 +1294,14 @@ h4.tuto-sec-subtitle {
 }
 .tutorial-wrap table tbody > tr > th {
   font-weight: 500;
-  background-color: #f3f5fa;
+  background-color: var(--ColorGrayLv1);
 }
 .tutorial-wrap table tbody > tr > td {
   padding: 10px 16px;
 }
 .tutorial-wrap table tbody > tr > td:first-child {
   font-weight: 500;
-  background-color: #f3f5fa;
+  background-color: var(--ColorGrayLv1);
 }
 
 .tuto-list {
@@ -1321,7 +1321,7 @@ h4.tuto-sec-subtitle {
   position: fixed;
   width: 5rem;
   height: 5rem;
-  border: 1px solid #d9dbe0;
+  border: 1px solid var(--ColorGrayLv2);
   border-radius: 4.8rem;
   right: 3.2rem;
   bottom: 3.2rem;
