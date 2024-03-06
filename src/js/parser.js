@@ -86,13 +86,7 @@
         width ? ` style="width: ${width}px;"` : ''
       }>${g1 ? `<figcaption>${g1}</figcaption>` : ''}</figure>`;
 
-      console.log('img', img);
-
-      return `<figure><img src="${
-        window.location.origin
-      }/pagetutorial/img/${PAGE_NAME}/${g2}"${
-        width ? ` style="width: ${width}px;"` : ''
-      }>${g1 ? `<figcaption>${g1}</figcaption>` : ''}</figure>`;
+      return img;
     },
   };
 
@@ -360,7 +354,6 @@
   };
 
   const renderMenu = (html) => {
-    // console.log(html);
     const menuTitles = html
       .filter((v) => /<h\d.+>/.test(v))
       .map((heading) => {
@@ -377,22 +370,33 @@
     const mainList = document.createElement('ol');
     mainList.setAttribute('class', 'list-item');
 
+    let activeMenuItem = null;
+
     menuTitles.forEach(([depth, title]) => {
       if (depth === 2) {
-        const item = document.createElement('li');
-        const link = document.createElement('a');
-        link.setAttribute('href', `#${title}`);
-        link.setAttribute('class', 'tit-drawer-menu');
-        link.textContent = title;
+        const item = document.createElement('details');
+        const itemTitle = document.createElement('summary');
+
+        itemTitle.textContent = title;
         const list = document.createElement('ol');
         list.setAttribute('class', 'subtit-drawer-menu');
-        item.appendChild(link);
+        item.appendChild(itemTitle);
         item.appendChild(list);
         mainList.appendChild(item);
         subMenu = list;
       } else if (depth === 4) {
       } else {
         const item = document.createElement('li');
+
+        item.addEventListener('click', () => {
+          if (activeMenuItem) {
+            console.log('activeMenuItem', activeMenuItem);
+            activeMenuItem.classList.remove('active-menu');
+          }
+          console.log('item', item);
+          item.classList.add('active-menu');
+          activeMenuItem = item;
+        });
         const link = document.createElement('a');
         link.setAttribute('href', `#${title}`);
         link.textContent = title;
