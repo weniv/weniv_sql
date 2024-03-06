@@ -390,10 +390,8 @@
 
         item.addEventListener('click', () => {
           if (activeMenuItem) {
-            console.log('activeMenuItem', activeMenuItem);
             activeMenuItem.classList.remove('active-menu');
           }
-          console.log('item', item);
           item.classList.add('active-menu');
           activeMenuItem = item;
         });
