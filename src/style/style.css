@@ -1145,7 +1145,7 @@ aside::-webkit-scrollbar-track {
   background-color: #ffffff;
   align-items: center;
   overflow-y: scroll;
-  padding: clamp(3.2rem, 5.2083333333vw, 10rem) clamp(2.4rem, 7.5520833333vw, 14.5rem) clamp(2.4rem, 7.5520833333vw, 14.5rem);
+  padding: 0 clamp(2.4rem, 7.5520833333vw, 14.5rem) clamp(3.2rem, 5.2083333333vw, 10rem) clamp(2.4rem, 7.5520833333vw, 14.5rem);
   box-sizing: border-box;
 }
 .tutorial-content::-webkit-scrollbar {
@@ -1160,6 +1160,9 @@ aside::-webkit-scrollbar-track {
 .tutorial-content::-webkit-scrollbar-track {
   background-color: transparent;
   margin-top: 5px;
+}
+.tutorial-content article {
+  width: 100%;
 }
 
 .list-wrap h3 {
@@ -1225,4 +1228,83 @@ aside::-webkit-scrollbar-track {
 
 .active-menu {
   background-color: #f3f5fa;
+}
+
+h2.tuto-title {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 4.7rem;
+  border-bottom: 2px solid #d9dbe0;
+  padding-bottom: clamp(1.6rem, 1.0416666667vw, 20rem);
+  margin-top: clamp(3.2rem, 5.2083333333vw, 10rem);
+  margin-bottom: clamp(2rem, 1.5625vw, 3.2rem);
+}
+
+h3.tuto-sec-title {
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 3.8rem;
+  margin-top: clamp(2rem, 1.5625vw, 3.2rem);
+  margin-bottom: clamp(2rem, 1.5625vw, 3.2rem);
+}
+
+h4.tuto-sec-subtitle {
+  font-weight: 700;
+  font-size: 2.4rem;
+  font-weight: 2.8rem;
+}
+
+.tutorial-wrap p {
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+}
+.tutorial-wrap strong {
+  font-weight: 700;
+}
+.tutorial-wrap pre {
+  background-color: #f3f5fa;
+  padding: 3.2rem 6rem 3.2rem 3.2rem;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  margin: 0.9rem 0;
+}
+.tutorial-wrap pre code {
+  color: #000;
+  background-color: transparent;
+}
+.tutorial-wrap code {
+  padding: 0.1rem 0.3em;
+  border-radius: 0.2em;
+  background-color: #dee8ff;
+  color: #2e6ff2;
+  font-weight: 500;
+}
+.tutorial-wrap figcaption {
+  text-align: center;
+  margin: 1.8rem 0;
+}
+.tutorial-wrap table {
+  width: auto;
+  margin: 2rem 0;
+}
+.tutorial-wrap table tbody > tr > th {
+  font-weight: 500;
+  background-color: #f3f5fa;
+}
+.tutorial-wrap table tbody > tr > td {
+  padding: 10px 16px;
+}
+.tutorial-wrap table tbody > tr > td:first-child {
+  font-weight: 500;
+  background-color: #f3f5fa;
+}
+
+.tuto-list {
+  margin-bottom: 1.8rem;
+}
+
+.tuto-unordered-list-item {
+  list-style: disc;
+  list-style-position: inside;
+  line-height: 2.7rem;
 }/*# sourceMappingURL=style.css.map */
