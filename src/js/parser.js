@@ -376,10 +376,15 @@
         link.setAttribute('href', `#${title}`);
         link.innerHTML = title;
 
+        if (PAGE_NAME === 'pagecheatsheet') {
+          itemTitle.classList.add('hidden-before');
+        }
+
         const list = document.createElement('ol');
         list.setAttribute('class', 'subtit-drawer-menu');
         itemTitle.appendChild(link);
         item.appendChild(itemTitle);
+
         item.appendChild(list);
         mainList.appendChild(item);
         subMenu = list;

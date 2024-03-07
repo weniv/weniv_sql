@@ -757,6 +757,18 @@ li.CodeMirror-hint-active {
   transform: translateX(-50%);
 }
 
+.fixed-header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--ColorBackground);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: var(--ColorGrayLv2);
+}
+
 body,
 html {
   cursor: default !important;
@@ -1097,31 +1109,13 @@ html {
   }
 }
 
-.tutorial-header {
-  position: fixed;
-  width: 100%;
-  background-color: var(--ColorBackground);
-}
-
-.progress-bar {
-  width: 100%;
-  height: 4px;
-  background-color: var(--ColorGrayLv2);
-}
-
-.tutorial-content-wrap {
-  display: flex;
-  margin-top: 7rem;
-  height: calc(100vh - 7rem);
-}
-
 aside {
   width: 32rem;
   height: calc(100vh - 7rem);
   left: 0;
-  overflow-y: scroll;
   border-right: 1px solid var(--ColorGrayLv2);
   box-sizing: border-box;
+  overflow: auto;
 }
 aside::-webkit-scrollbar {
   width: 6px;
@@ -1165,12 +1159,12 @@ aside .active-menu {
 }
 .list-item summary {
   display: flex;
-  height: 4rem;
+  align-items: center;
   list-style-type: none;
   font-size: 1.6rem;
   font-weight: 500;
   position: relative;
-  padding: 1rem 1.2em;
+  padding: 9px;
   cursor: pointer;
   gap: 8px;
   box-sizing: border-box;
@@ -1204,6 +1198,19 @@ aside .active-menu {
 }
 .subtit-drawer-menu > li a {
   width: 100%;
+}
+
+.hidden-before::before {
+  display: none;
+}
+.hidden-before a {
+  margin-left: 1.2rem;
+}
+
+.tutorial-content-wrap {
+  display: flex;
+  margin-top: 7rem;
+  height: calc(100vh - 7rem);
 }
 
 .tutorial-content {
