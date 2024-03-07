@@ -340,10 +340,6 @@
   };
 
   const fetchMarkdown = async () => {
-    // const res = await fetch(
-    //   `${window.location.origin}/src/pages/${PAGE_NAME}/article.md`,
-    // );
-
     const res = await fetch(
       `${window.location.origin}/_md/${PAGE_NAME}/article.md`,
     );
@@ -376,10 +372,13 @@
       if (depth === 2) {
         const item = document.createElement('details');
         const itemTitle = document.createElement('summary');
+        const link = document.createElement('a');
+        link.setAttribute('href', `#${title}`);
+        link.innerHTML = title;
 
-        itemTitle.textContent = title;
         const list = document.createElement('ol');
         list.setAttribute('class', 'subtit-drawer-menu');
+        itemTitle.appendChild(link);
         item.appendChild(itemTitle);
         item.appendChild(list);
         mainList.appendChild(item);
@@ -387,6 +386,11 @@
       } else if (depth === 4) {
       } else {
         const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.setAttribute('href', `#${title}`);
+        link.textContent = title;
+        item.appendChild(link);
+        subMenu.appendChild(item);
 
         item.addEventListener('click', () => {
           if (activeMenuItem) {
@@ -395,15 +399,8 @@
           item.classList.add('active-menu');
           activeMenuItem = item;
         });
-        const link = document.createElement('a');
-        link.setAttribute('href', `#${title}`);
-        link.textContent = title;
-        item.appendChild(link);
-        subMenu.appendChild(item);
       }
     });
-
-    // console.log(mainList);
 
     const aside = document.querySelector(`aside > ul > .list-wrap`);
     aside.appendChild(mainList);
