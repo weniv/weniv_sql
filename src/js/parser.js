@@ -211,7 +211,7 @@
       (key) =>
         (token = token.replaceAll(
           key,
-          `<span style="color:#5966ec";>${key}</span>`,
+          `<span style="color: var(--ColorCodeOrange)";>${key}</span>`,
         )),
     );
 
@@ -366,7 +366,7 @@
     const mainList = document.createElement('ol');
     mainList.setAttribute('class', 'list-item');
 
-    let activeMenuItem = null;
+    // let activeMenuItem = null;
 
     menuTitles.forEach(([depth, title]) => {
       if (depth === 2) {
@@ -397,13 +397,13 @@
         item.appendChild(link);
         subMenu.appendChild(item);
 
-        item.addEventListener('click', () => {
-          if (activeMenuItem) {
-            activeMenuItem.classList.remove('active-menu');
-          }
-          item.classList.add('active-menu');
-          activeMenuItem = item;
-        });
+        // item.addEventListener('click', () => {
+        //   if (activeMenuItem) {
+        //     activeMenuItem.classList.remove('active-menu');
+        //   }
+        //   item.classList.add('active-menu');
+        //   activeMenuItem = item;
+        // });
       }
     });
 

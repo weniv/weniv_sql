@@ -33,11 +33,11 @@ aside {
     align-items: center;
   }
 
-  .active-menu {
-    background-color: var(--ColorGrayLv1);
-    color: var(--ColorPrimary);
-    font-weight: 700;
-  }
+  // .active-menu {
+  //   background-color: var(--ColorGrayLv1);
+  //   color: var(--ColorPrimary);
+  //   font-weight: 700;
+  // }
 }
 
 .list-item {
@@ -109,5 +109,7 @@ aside {
 
   a {
     margin-left: 1.2rem;
+    width: 100%;
+    padding: 0.6rem 0;
   }
 }

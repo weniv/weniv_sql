@@ -1140,11 +1140,6 @@ aside .list-wrap > h3 {
   box-sizing: border-box;
   align-items: center;
 }
-aside .active-menu {
-  background-color: var(--ColorGrayLv1);
-  color: var(--ColorPrimary);
-  font-weight: 700;
-}
 
 .list-item {
   font-size: 1.6rem;
@@ -1205,6 +1200,8 @@ aside .active-menu {
 }
 .hidden-before a {
   margin-left: 1.2rem;
+  width: 100%;
+  padding: 0.6rem 0;
 }
 
 .tutorial-content-wrap {
