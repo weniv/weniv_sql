@@ -1026,7 +1026,8 @@ aside {
     padding-left: 6rem; }
 
 summary.hidden-before {
-  padding: 0; }
+  padding: 0;
+  font-weight: 400; }
   summary.hidden-before::before {
     display: none; }
   summary.hidden-before a {
