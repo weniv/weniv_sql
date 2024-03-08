@@ -553,6 +553,12 @@ button {
       width: 209px;
       height: 26px; } }
 
+.svg-primary {
+  fill: var(--ColorPrimary); }
+
+.svg-graylv4 {
+  fill: var(--ColorGrayLv4); }
+
 .external-link {
   font-size: 1.8rem;
   line-height: 2.4rem;
@@ -778,7 +784,7 @@ html {
   font-weight: 400;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid var(--ColorGrayLv2);
-  color: var(--ColorGrayLv2); }
+  color: var(--ColorGrayLv3); }
   .tab-list .tab-item button {
     color: var(--ColorGrayLv2);
     transition: all 0.2s; }

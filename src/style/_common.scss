@@ -332,6 +332,13 @@ button {
   }
 }
 
+.svg-primary {
+  fill: var(--ColorPrimary);
+}
+.svg-graylv4 {
+  fill: var(--ColorGrayLv4);
+}
+
 .external-link {
   font-size: 1.8rem;
   line-height: 2.4rem;
