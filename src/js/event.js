@@ -259,3 +259,19 @@ tableList.forEach((table) => {
   docFrag.appendChild(li);
 });
 $tableListCont.appendChild(docFrag);
+
+const $NoticeCont = document.querySelector('.notice-cont');
+const $NoticeCloseBtn = $NoticeCont.querySelector('.btn-close');
+$NoticeCloseBtn.addEventListener('click', () => {
+  $NoticeCont.classList.add('hidden');
+  localStorage.setItem('notice-close', 'true');
+});
+
+const displayNotice = () => {
+  const noticeClose = localStorage.getItem('notice-close');
+  console.log(noticeClose);
+  if (noticeClose === 'true') {
+    $NoticeCont.classList.add('hidden');
+  }
+};
+displayNotice();
