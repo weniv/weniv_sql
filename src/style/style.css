@@ -557,24 +557,19 @@ button {
   font-size: 1.8rem;
   line-height: 2.4rem;
   font-weight: 400;
-  margin-right: 2rem;
+  width: 10rem;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem; }
-  .external-link::after {
-    content: '';
-    width: 1.2rem;
-    height: 1.2rem;
-    background: var(--ColorGrayLv3);
-    -webkit-mask-image: url("../assets/icon/icon-diagonal-arrow.svg");
-    -webkit-mask-size: 100%;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center center;
-    mask-image: url("../assets/icon/icon-diagonal-arrow.svg");
-    mask-size: 100%;
-    mask-repeat: no-repeat;
-    mask-position: center center; }
+  gap: 0.4rem;
+  transition: all 0.4s;
+  color: var(--ColorGrayLv3); }
+  .external-link:hover {
+    color: var(--ColorPrimary); }
+  .external-link.active {
+    color: var(--ColorPrimary);
+    font-weight: 700; }
 
 /* table */
 table {
@@ -681,6 +676,16 @@ li.CodeMirror-hint-active {
   top: calc(4.2rem + 0.4rem);
   left: 50%;
   transform: translateX(-50%); }
+
+.fixed-header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--ColorBackground); }
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: var(--ColorGrayLv2); }
 
 body,
 html {
@@ -984,5 +989,196 @@ html {
   @media (max-width: 780px) {
     .link-list {
       position: static; } }
+
+aside {
+  width: 32rem;
+  height: calc(100vh - 7rem);
+  left: 0;
+  border-right: 1px solid var(--ColorGrayLv2);
+  box-sizing: border-box;
+  overflow: auto; }
+  aside::-webkit-scrollbar {
+    width: 6px; }
+  aside::-webkit-scrollbar-thumb {
+    margin-top: 10rem;
+    background-color: var(--ColorGrayLv3);
+    width: 6px;
+    border-radius: 6px;
+    min-height: 50px; }
+  aside::-webkit-scrollbar-track {
+    margin-top: 5px;
+    background-color: transparent; }
+  aside .list-wrap > h3 {
+    display: flex;
+    font-size: 1.4rem;
+    font-weight: 600;
+    height: 5rem;
+    padding: 0 20px;
+    box-sizing: border-box;
+    align-items: center; }
+
+.list-item {
+  font-size: 1.6rem;
+  line-height: 2.2rem; }
+  .list-item .tit-drawer-menu {
+    display: flex;
+    width: 100%;
+    padding: 9px 9px 9px 60px;
+    box-sizing: border-box;
+    cursor: pointer; }
+  .list-item summary {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    font-size: 1.6rem;
+    font-weight: 500;
+    position: relative;
+    padding: 9px;
+    cursor: pointer;
+    gap: 8px;
+    box-sizing: border-box; }
+    .list-item summary:hover {
+      background-color: var(--ColorActivation); }
+    .list-item summary::-webkit-details-marker {
+      display: block; }
+    .list-item summary::before {
+      content: url("../assets/icon/icon-chapter-btn.svg");
+      transition: 0.25s transform;
+      transform: rotateZ(-90deg); }
+  .list-item details[open] summary:before {
+    transform: rotateZ(0deg); }
+
+.subtit-drawer-menu > li {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 1.6rem; }
+  .subtit-drawer-menu > li:hover {
+    background-color: var(--ColorActivation); }
+  .subtit-drawer-menu > li a {
+    width: 100%;
+    padding: 0.9rem;
+    padding-left: 6rem; }
+
+summary.hidden-before {
+  padding: 0;
+  font-weight: 400; }
+  summary.hidden-before::before {
+    display: none; }
+  summary.hidden-before a {
+    width: 100%;
+    padding: 0.9rem;
+    padding-left: 2.1rem; }
+
+.tutorial-content-wrap {
+  display: flex;
+  margin-top: 7rem;
+  height: calc(100vh - 7rem); }
+
+.tutorial-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--ColorBackground);
+  align-items: center;
+  overflow-y: scroll;
+  padding: 0 clamp(2.4rem, 7.55208vw, 14.5rem) clamp(3.2rem, 5.20833vw, 10rem) clamp(2.4rem, 7.55208vw, 14.5rem);
+  box-sizing: border-box; }
+  .tutorial-content::-webkit-scrollbar {
+    width: 6px; }
+  .tutorial-content::-webkit-scrollbar-thumb {
+    background-color: var(--ColorGrayLv3);
+    width: 6px;
+    border-radius: 6px;
+    min-height: 50px; }
+  .tutorial-content::-webkit-scrollbar-track {
+    background-color: transparent;
+    margin-top: 5px; }
+  .tutorial-content article {
+    width: 100%; }
+  .tutorial-content p {
+    font-size: 1.8rem;
+    line-height: 3.2rem; }
+  .tutorial-content strong {
+    font-weight: 700; }
+  .tutorial-content pre {
+    display: flex;
+    background-color: var(--ColorGrayLv1);
+    padding: 3.2rem 6rem 3.2rem 3.2rem;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    margin: 0.9rem 0;
+    white-space: pre-line; }
+    .tutorial-content pre code {
+      color: var(--ColorSurface);
+      background-color: transparent; }
+  .tutorial-content code {
+    padding: 0.1rem 0.3em;
+    border-radius: 0.2em;
+    background-color: var(--ColorActivation);
+    color: var(--ColorPrimary);
+    font-weight: 500; }
+  .tutorial-content figcaption {
+    text-align: center;
+    margin: 1.8rem 0; }
+  .tutorial-content table {
+    width: auto;
+    margin: 2rem 0; }
+    .tutorial-content table tbody > tr > th {
+      font-weight: 500;
+      background-color: var(--ColorGrayLv1); }
+    .tutorial-content table tbody > tr > td {
+      padding: 10px 16px; }
+    .tutorial-content table tbody > tr > td:first-child {
+      font-weight: 500;
+      background-color: var(--ColorGrayLv1); }
+
+h2.tuto-title {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 4.7rem;
+  border-bottom: 2px solid var(--ColorGrayLv2);
+  padding-bottom: clamp(1.6rem, 1.04167vw, 20rem);
+  margin-top: clamp(3.2rem, 5.20833vw, 10rem);
+  margin-bottom: clamp(2rem, 1.5625vw, 3.2rem); }
+
+h3.tuto-sec-title {
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 3.8rem;
+  margin-top: clamp(2rem, 1.5625vw, 3.2rem);
+  margin-bottom: clamp(2rem, 1.5625vw, 3.2rem); }
+
+h4.tuto-sec-subtitle {
+  font-weight: 700;
+  font-size: 2.4rem;
+  font-weight: 2.8rem; }
+
+.tuto-list {
+  margin-bottom: 1.8rem; }
+
+.tuto-unordered-list-item {
+  list-style: disc;
+  list-style-position: inside;
+  line-height: 2.7rem; }
+
+.top-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid var(--ColorGrayLv2);
+  border-radius: 4.8rem;
+  right: 3.2rem;
+  bottom: 3.2rem; }
+  .top-btn::before {
+    display: block;
+    content: url("../assets/icon/icon-up-arrow.svg");
+    width: 2.4rem;
+    height: 2.4rem; }
 
 /*# sourceMappingURL=style.css.map */

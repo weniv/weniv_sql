@@ -336,22 +336,35 @@ button {
   font-size: 1.8rem;
   line-height: 2.4rem;
   font-weight: 400;
-  margin-right: 2rem;
-
+  // margin-right: 2rem;
+  width: 10rem;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
+  transition: all 0.4s;
 
-  &::after {
-    content: '';
-    width: 1.2rem;
-    height: 1.2rem;
-    @include mask-image(
-      var(--ColorGrayLv3),
-      '../assets/icon/icon-diagonal-arrow.svg'
-    );
+  color: var(--ColorGrayLv3);
+
+  &:hover {
+    color: var(--ColorPrimary);
   }
+
+  &.active {
+    color: var(--ColorPrimary);
+    font-weight: 700;
+  }
+
+  // &::after {
+  //   content: '';
+  //   width: 1.2rem;
+  //   height: 1.2rem;
+  //   @include mask-image(
+  //     var(--ColorGrayLv3),
+  //     '../assets/icon/icon-diagonal-arrow.svg'
+  //   );
+  // }
 }
 
 /* table */

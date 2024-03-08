@@ -48,6 +48,15 @@ window.addEventListener('click', (e) => {
   }
 });
 
+// 최상단으로 이동
+const content = document.querySelector('.tutorial-content');
+const topBtn = document.querySelector('.top-btn');
+
+topBtn?.addEventListener('click', () => {
+  console.log(1111, content.scrollTop);
+  content.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 // tooltip 크기 조절
 const resizeTooltip = (target, ratio) => {
   const targetWidth = target.clientWidth;
@@ -269,7 +278,6 @@ $NoticeCloseBtn.addEventListener('click', () => {
 
 const displayNotice = () => {
   const noticeClose = localStorage.getItem('notice-close');
-  console.log(noticeClose);
   if (noticeClose === 'true') {
     $NoticeCont.classList.add('hidden');
   }
