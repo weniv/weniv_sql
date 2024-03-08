@@ -341,7 +341,7 @@
 
   const fetchMarkdown = async () => {
     const res = await fetch(
-      `${window.location.origin}/_md/${PAGE_NAME}/article.md`,
+      `${window.location.origin}/src/md/${PAGE_NAME}/article.md`,
     );
 
     const markdown = await res.text();
