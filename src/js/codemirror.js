@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.keyCode === 13 && event.shiftKey) {
       const runBtn = document.querySelector('.run-btn');
       runBtn.click();
+      event.preventDefault();
     }
     // a~z, 1~F12, delete~9
     if (
