@@ -538,24 +538,19 @@ button {
   font-size: 1.8rem;
   line-height: 2.4rem;
   font-weight: 400;
-  margin-right: 2rem;
+  width: 10rem;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem; }
-  .external-link::after {
-    content: '';
-    width: 1.2rem;
-    height: 1.2rem;
-    background: var(--ColorGrayLv3);
-    -webkit-mask-image: url("../assets/icon/icon-diagonal-arrow.svg");
-    -webkit-mask-size: 100%;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center center;
-    mask-image: url("../assets/icon/icon-diagonal-arrow.svg");
-    mask-size: 100%;
-    mask-repeat: no-repeat;
-    mask-position: center center; }
+  gap: 0.4rem;
+  transition: all 0.4s;
+  color: var(--ColorGrayLv3); }
+  .external-link:hover {
+    color: var(--ColorPrimary); }
+  .external-link.active {
+    color: var(--ColorPrimary);
+    font-weight: 700; }
 
 /* table */
 table {
