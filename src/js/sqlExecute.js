@@ -100,7 +100,7 @@ $tableListCont.appendChild(docFrag);
 const $NoticeCont = document.querySelector('.notice-cont');
 const $NoticeCloseBtn = $NoticeCont.querySelector('.btn-close');
 $NoticeCloseBtn.addEventListener('click', () => {
-  $NoticeCont.classList.add('show');
+  $NoticeCont.classList.remove('show');
   localStorage.setItem('notice-close', 'true');
 });
 
