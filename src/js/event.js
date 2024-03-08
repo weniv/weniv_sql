@@ -52,7 +52,7 @@ window.addEventListener('click', (e) => {
 const content = document.querySelector('.tutorial-content');
 const topBtn = document.querySelector('.top-btn');
 
-topBtn.addEventListener('click', () => {
+topBtn?.addEventListener('click', () => {
   console.log(1111, content.scrollTop);
   content.scrollTo({ top: 0, behavior: 'smooth' });
 });
@@ -268,3 +268,18 @@ tableList.forEach((table) => {
   docFrag.appendChild(li);
 });
 $tableListCont.appendChild(docFrag);
+
+const $NoticeCont = document.querySelector('.notice-cont');
+const $NoticeCloseBtn = $NoticeCont.querySelector('.btn-close');
+$NoticeCloseBtn.addEventListener('click', () => {
+  $NoticeCont.classList.add('hidden');
+  localStorage.setItem('notice-close', 'true');
+});
+
+const displayNotice = () => {
+  const noticeClose = localStorage.getItem('notice-close');
+  if (noticeClose === 'true') {
+    $NoticeCont.classList.add('hidden');
+  }
+};
+displayNotice();

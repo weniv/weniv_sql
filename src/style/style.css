@@ -395,6 +395,25 @@ button {
     .btn-reset:hover::after {
       background: var(--ColorSurface); } }
 
+/* notice close 버튼 */
+.btn-close {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex; }
+  .btn-close::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: var(--ColorPrimary);
+    -webkit-mask-image: url("../assets/icon/icon-X.svg");
+    -webkit-mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-image: url("../assets/icon/icon-X.svg");
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center center; }
+
 /* kebab 버튼 */
 .btn-kebab {
   width: 4.2rem;
@@ -538,24 +557,19 @@ button {
   font-size: 1.8rem;
   line-height: 2.4rem;
   font-weight: 400;
-  margin-right: 2rem;
+  width: 10rem;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem; }
-  .external-link::after {
-    content: '';
-    width: 1.2rem;
-    height: 1.2rem;
-    background: var(--ColorGrayLv3);
-    -webkit-mask-image: url("../assets/icon/icon-diagonal-arrow.svg");
-    -webkit-mask-size: 100%;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center center;
-    mask-image: url("../assets/icon/icon-diagonal-arrow.svg");
-    mask-size: 100%;
-    mask-repeat: no-repeat;
-    mask-position: center center; }
+  gap: 0.4rem;
+  transition: all 0.4s;
+  color: var(--ColorGrayLv3); }
+  .external-link:hover {
+    color: var(--ColorPrimary); }
+  .external-link.active {
+    color: var(--ColorPrimary);
+    font-weight: 700; }
 
 /* table */
 table {
@@ -819,6 +833,29 @@ html {
   padding: 3.2rem 0;
   margin-left: 2.2rem;
   flex: 1; }
+
+.notice-cont {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 3.8rem 1.5rem 2rem;
+  margin-bottom: 3.2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--ColorPrimary);
+  background: var(--ColorGrayLv1);
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2rem;
+  display: flex; }
+  .notice-cont.hidden {
+    display: none; }
+  .notice-cont .btn-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem; }
 
 .footer {
   padding: 6rem 0;
@@ -1137,7 +1174,8 @@ h4.tuto-sec-subtitle {
   border: 1px solid var(--ColorGrayLv2);
   border-radius: 4.8rem;
   right: 3.2rem;
-  bottom: 3.2rem; }
+  bottom: 3.2rem;
+  background: var(--ColorBackground); }
   .top-btn::before {
     display: block;
     content: url("../assets/icon/icon-up-arrow.svg");
