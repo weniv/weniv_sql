@@ -211,7 +211,7 @@
       (key) =>
         (token = token.replaceAll(
           key,
-          `<span style="color: var(--ColorCodeOrange)";>${key}</span>`,
+          `<span style="color: var(--ColorCodeBlue)";>${key}</span>`,
         )),
     );
 

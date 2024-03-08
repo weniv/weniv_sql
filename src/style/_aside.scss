@@ -87,7 +87,6 @@ aside {
 .subtit-drawer-menu > li {
   display: flex;
   width: 100%;
-  padding: 9px 9px 9px 60px;
   box-sizing: border-box;
   cursor: pointer;
   font-weight: 400;
@@ -99,17 +98,21 @@ aside {
 
   a {
     width: 100%;
+    padding: 0.9rem;
+    padding-left: 6rem;
   }
 }
 
-.hidden-before {
+summary.hidden-before {
+  padding: 0;
+
   &::before {
     display: none;
   }
 
   a {
-    margin-left: 1.2rem;
     width: 100%;
-    padding: 0.6rem 0;
+    padding: 0.9rem;
+    padding-left: 2.1rem;
   }
 }
