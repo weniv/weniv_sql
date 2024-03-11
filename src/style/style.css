@@ -881,12 +881,57 @@ html {
     right: 1rem; }
 
 .cont-fileupload {
-  display: flex;
+  display: none;
+  max-width: 28rem;
   flex-direction: column;
-  gap: 0.4rem;
-  padding: 1rem;
-  margin: 1rem auto;
-  border: 1px solid black; }
+  padding: 3.2rem 2.4rem 3.2rem;
+  gap: 1.6rem;
+  border: 1px solid var(--ColorGrayLv2);
+  background-color: var(--ColorBackground);
+  border-radius: 1rem;
+  box-shadow: var(--EffectShadow);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10; }
+  .cont-fileupload.show {
+    display: flex; }
+  .cont-fileupload h2 {
+    font-weight: 600; }
+  .cont-fileupload .btn-close {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem; }
+    .cont-fileupload .btn-close::after {
+      background-color: var(--ColorGrayLv3); }
+  .cont-fileupload label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ColorGrayLv4); }
+  .cont-fileupload input[type='text'] {
+    padding: 1.1rem 1.6rem;
+    border: 1px solid var(--ColorGrayLv2);
+    border-radius: 1rem; }
+  .cont-fileupload input[type='file'] {
+    padding: 1.1rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--ColorGrayLv2);
+    display: flex; }
+    .cont-fileupload input[type='file']::before {
+      content: ''; }
+  .cont-fileupload #btn-upload {
+    padding: 1.1rem;
+    background-color: var(--ColorPrimary);
+    color: #fff;
+    border-radius: 1rem; }
+
+#csv-type {
+  padding: 1.1rem 1.6rem;
+  border-radius: 1rem; }
 
 .footer {
   padding: 6rem 0;

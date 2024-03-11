@@ -113,6 +113,7 @@ const showErrorMessage = (err) => {
   const errorMsg = document.querySelector('.error-msg');
   errorMsg.classList.remove('hidden');
   errorMsg.textContent = err;
+  console.log(err);
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -151,9 +152,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     runSQL(db);
   });
 
+  const $fileCont = document.querySelector('.cont-fileupload');
   const $tableInput = document.getElementById('table-input');
   const $tableName = document.getElementById('table-name');
   const $btnUpload = document.getElementById('btn-upload');
+
+  const $closeBtn = $fileCont.querySelector('.btn-close');
+  window.addEventListener('click', (e) => {
+    if ($fileCont.classList.contains('show')) {
+      if (e.target === $closeBtn) {
+        $fileCont.classList.remove('show');
+      } else if ($fileCont.contains(e.target)) {
+        e.stopPropagation();
+      } else {
+        $fileCont.classList.remove('show');
+      }
+    }
+  });
+
+  $tableInput.addEventListener('change', (e) => {
+    const csvType = document.getElementById('csv-type');
+
+    if (e.target.files[0].type == 'text/csv') {
+      csvType.removeAttribute('disabled');
+    } else {
+      const csvType = document.getElementById('csv-type');
+      csvType.setAttribute('disabled', true);
+    }
+  });
 
   $btnUpload.addEventListener('click', () => {
     const file = $tableInput.files[0];
@@ -174,7 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const state = createTable(db, tableName, columns, values);
         if (state) {
           showAlertMessage(`${tableName} 테이블이 생성되었습니다`);
-          saveUploadedTable(tableName, columns, values);
+          // saveUploadedTable(tableName, columns, values);
         }
       };
       reader.readAsText(file);
@@ -183,12 +209,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       reader.onload = function (e) {
         const csv = e.target.result;
         const lines = csv.split('\n');
-        const columns = lines[0].split(',');
-        const values = lines.slice(1).map((line) => line.split(','));
+        const type = document.getElementById('csv-type').value;
+        const columns = lines[0].split(type);
+        const values = lines.slice(1).map((line) => line.split(type));
         const state = createTable(db, tableName, columns, values);
         if (state) {
           showAlertMessage(`${tableName} 테이블이 생성되었습니다`);
-          saveUploadedTable(tableName, columns, values);
+          // saveUploadedTable(tableName, columns, values);
         }
       };
       reader.readAsText(file);

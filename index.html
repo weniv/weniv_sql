@@ -274,13 +274,27 @@
           </div>
           <button class="run-btn">Run SQL</button>
         </section>
-        <section class="cont-fileupload">
-          <h2 class="sr-only">파일 업로드</h2>
-          <input type="file" id="table-input" accept=".csv, .json" />
+        <section class="cont-fileupload show">
+          <h2>파일 업로드</h2>
           <label for="table-name"
-            >테이블 이름: <input type="text" id="table-name"
+            >테이블명 <input type="text" id="table-name"
           /></label>
+          <label for="table-input"
+            >파일 업로드
+            <input type="file" id="table-input" accept=".csv, .json"
+          /></label>
+          <label for="csv-type">
+            csv 구분자
+            <select name="csv-type" id="csv-type" disabled>
+              <option value="," default>콤마 ,</option>
+              <option value=";">세미콜론 ;</option>
+              <option value="|">파이프 |</option>
+            </select></label
+          >
           <button id="btn-upload">업로드</button>
+          <button class="btn-close">
+            <span class="sr-only">모달창 닫기</span>
+          </button>
         </section>
         <section class="cont-table"></section>
         <ul class="tab-list" role="tablist">
