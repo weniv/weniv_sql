@@ -17,30 +17,36 @@ const getModifiedType = (value) => {
   }
 };
 
-const createTable = (db, file, columns, values) => {
-  const tableName = file;
+const createTable = (db, name, columns, values) => {
+  try {
+    const tableName = name;
 
-  columns.map((column, index) => {
-    return `column ${column}`;
-  });
+    columns.map((column, index) => {
+      return `column ${column}`;
+    });
 
-  let sqlStr = `CREATE TABLE IF NOT EXISTS ${tableName} `;
-  sqlStr += ` (${columns
-    .map((column, idx) => {
-      return `${column} ${getModifiedType(values[0][idx])}`;
-    })
-    .join(', ')})`;
-  db.run(sqlStr);
+    let sqlStr = `CREATE TABLE ${tableName} `;
+    sqlStr += ` (${columns
+      .map((column, idx) => {
+        return `${column} ${getModifiedType(values[0][idx])}`;
+      })
+      .join(', ')})`;
+    db.run(sqlStr);
 
-  const stmt = db.prepare(
-    `INSERT INTO ${tableName} VALUES (${columns.map(() => '?').join(',')})`,
-  );
-  values.forEach((value) => stmt.run(value));
-  stmt.free();
+    const stmt = db.prepare(
+      `INSERT INTO ${tableName} VALUES (${columns.map(() => '?').join(',')})`,
+    );
+    values.forEach((value) => stmt.run(value));
+    stmt.free();
+
+    return name;
+  } catch (err) {
+    showErrorMessage(err);
+  }
 };
 
-const getJsonToTable = async (db, file) => {
-  const response = await fetch(`./src/data/${file}.json`, {
+const getJsonToTable = async (db, name) => {
+  const response = await fetch(`./src/data/${name}.json`, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -50,7 +56,7 @@ const getJsonToTable = async (db, file) => {
   const columns = Object.keys(data[0]);
   const values = data.map((value) => Object.values(value));
 
-  createTable(db, file, columns, values);
+  createTable(db, name, columns, values);
 };
 
 const getResultTable = (data) => {
@@ -88,9 +94,16 @@ const getResultTable = (data) => {
   table.appendChild(tbody);
 };
 
+const showAlertMessage = (err) => {
+  const alertMsg = document.querySelector('.alert-msg');
+  alertMsg.classList.remove('hidden');
+  alertMsg.textContent = err;
+  setTimeout(() => {
+    alertMsg.classList.add('hidden');
+  }, 2000);
+};
+
 const showErrorMessage = (err) => {
-  const table = document.querySelector('.result-table');
-  // table.classList.add('hidden');
   const errorMsg = document.querySelector('.error-msg');
   errorMsg.classList.remove('hidden');
   errorMsg.textContent = err;
@@ -128,5 +141,44 @@ document.addEventListener('DOMContentLoaded', async () => {
   $btnRun.addEventListener('click', () => {
     changeTab('result');
     runSQL(db);
+  });
+
+  const $tableInput = document.getElementById('table-input');
+  const $tableName = document.getElementById('table-name');
+  const $btnUpload = document.getElementById('btn-upload');
+
+  $btnUpload.addEventListener('click', () => {
+    // $tableInput의 파일과 $tableName에 입력된 값을 출력
+    const file = $tableInput.files[0];
+    const tableName = $tableName.value;
+
+    if (!file || !tableName) {
+      showErrorMessage('올바른 파일과 테이블 이름을 입력해주세요.');
+      return null;
+    }
+
+    if (file.type == 'application/json') {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        columns = Object.keys(JSON.parse(e.target.result)[0]);
+        values = JSON.parse(e.target.result).map((value) =>
+          Object.values(value),
+        );
+        createTable(db, tableName, columns, values) &&
+          showAlertMessage(`${tableName} 테이블이 생성되었습니다`);
+      };
+      reader.readAsText(file);
+    } else if (file.type == 'text/csv') {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const csv = e.target.result;
+        const lines = csv.split('\n');
+        const columns = lines[0].split(',');
+        const values = lines.slice(1).map((line) => line.split(','));
+        createTable(db, tableName, columns, values) &&
+          showAlertMessage(`${tableName} 테이블이 생성되었습니다`);
+      };
+      reader.readAsText(file);
+    }
   });
 });

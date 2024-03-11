@@ -398,9 +398,10 @@ td {
 }
 
 /* Error Message */
+.alert-msg,
 .error-msg {
   display: block;
-  border: 2px solid var(--ColorError);
+  border: 2px solid var(--ColorPrimary);
   width: auto;
   text-align: left;
   padding: 1.5rem;
@@ -415,14 +416,24 @@ td {
     width: 2.4rem;
     height: 2.4rem;
     content: '';
+    @include mask-image(var(--ColorPrimary), '../assets/icon/icon-Check.svg');
+  }
+}
+.alert-msg.hidden,
+.error-msg.hidden {
+  display: none;
+}
+
+/* Error Message */
+.error-msg {
+  border: 2px solid var(--ColorError);
+
+  &::before {
     @include mask-image(
       var(--ColorError),
       '../assets/icon/icon-alert-circle.svg'
     );
   }
-}
-.error-msg.hidden {
-  display: none;
 }
 
 .CodeMirror-hints {

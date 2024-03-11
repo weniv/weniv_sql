@@ -600,9 +600,10 @@ td {
   border: 1px solid var(--ColorGrayLv2); }
 
 /* Error Message */
+.alert-msg,
 .error-msg {
   display: block;
-  border: 2px solid var(--ColorError);
+  border: 2px solid var(--ColorPrimary);
   width: auto;
   text-align: left;
   padding: 1.5rem;
@@ -611,11 +612,30 @@ td {
   display: flex;
   align-items: center;
   gap: 1.2rem; }
+  .alert-msg::before,
   .error-msg::before {
     display: block;
     width: 2.4rem;
     height: 2.4rem;
     content: '';
+    background: var(--ColorPrimary);
+    -webkit-mask-image: url("../assets/icon/icon-Check.svg");
+    -webkit-mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-image: url("../assets/icon/icon-Check.svg");
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center center; }
+
+.alert-msg.hidden,
+.error-msg.hidden {
+  display: none; }
+
+/* Error Message */
+.error-msg {
+  border: 2px solid var(--ColorError); }
+  .error-msg::before {
     background: var(--ColorError);
     -webkit-mask-image: url("../assets/icon/icon-alert-circle.svg");
     -webkit-mask-size: 100%;
@@ -625,9 +645,6 @@ td {
     mask-size: 100%;
     mask-repeat: no-repeat;
     mask-position: center center; }
-
-.error-msg.hidden {
-  display: none; }
 
 .CodeMirror-hints {
   border-radius: 9px;
@@ -862,6 +879,14 @@ html {
     position: absolute;
     top: 1rem;
     right: 1rem; }
+
+.cont-fileupload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem;
+  margin: 1rem auto;
+  border: 1px solid black; }
 
 .footer {
   padding: 6rem 0;

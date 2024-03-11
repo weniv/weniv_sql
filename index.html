@@ -274,6 +274,14 @@
           </div>
           <button class="run-btn">Run SQL</button>
         </section>
+        <section class="cont-fileupload">
+          <h2 class="sr-only">파일 업로드</h2>
+          <input type="file" id="table-input" accept=".csv, .json" />
+          <label for="table-name"
+            >테이블 이름: <input type="text" id="table-name"
+          /></label>
+          <button id="btn-upload">업로드</button>
+        </section>
         <section class="cont-table"></section>
         <ul class="tab-list" role="tablist">
           <li
@@ -306,7 +314,8 @@
           aria-hidden="false"
           class="panel-item cont-result active"
         >
-          <span class="error-msg hidden">안녕하세요</span>
+          <span class="alert-msg hidden"></span>
+          <span class="error-msg hidden"></span>
           <table class="result-table"></table>
         </section>
         <section
