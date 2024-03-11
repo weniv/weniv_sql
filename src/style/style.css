@@ -628,6 +628,12 @@ button {
   }
 }
 
+.svg-primary {
+  fill: var(--ColorPrimary); }
+
+.svg-graylv4 {
+  fill: var(--ColorGrayLv4); }
+
 .external-link {
   font-size: 1.8rem;
   line-height: 2.4rem;
@@ -892,6 +898,7 @@ html {
   font-weight: 400;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid var(--ColorGrayLv2);
+<<<<<<< HEAD
   color: var(--ColorGrayLv2);
 }
 .tab-list .tab-item button {
@@ -905,6 +912,17 @@ html {
 .tab-list .tab-item :hover {
   color: var(--ColorPrimary);
 }
+=======
+  color: var(--ColorGrayLv3); }
+  .tab-list .tab-item button {
+    color: var(--ColorGrayLv2);
+    transition: all 0.2s; }
+  .tab-list .tab-item.active button {
+    color: var(--ColorPrimary);
+    font-weight: 600; }
+  .tab-list .tab-item :hover {
+    color: var(--ColorPrimary); }
+>>>>>>> 5cf4eea74b3946cf78b9487df0e539bf4d110c2d
 
 .panel-item {
   display: none;
