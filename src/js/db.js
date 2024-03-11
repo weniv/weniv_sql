@@ -59,6 +59,12 @@ const getJsonToTable = async (db, name) => {
   createTable(db, name, columns, values);
 };
 
+const getSessionTable = (db, table) => {
+  const data = JSON.parse(sessionStorage.getItem(`table_${table}`));
+  createTable(db, table, data.columns, data.values);
+  console.log('session table', table);
+};
+
 const getResultTable = (data) => {
   const columns = data?.columns;
   const values = data?.values;
@@ -124,8 +130,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     '주문상세',
     '공급업체',
   ];
+  tableList.map((file) => getJsonToTable(db, file));
 
-  await Promise.all(tableList.map((file) => getJsonToTable(db, file)));
+  const sessionTableList = JSON.parse(sessionStorage.getItem('table_list'));
+  sessionTableList?.map((table) => getSessionTable(db, table));
 
   const runSQL = (db) => {
     try {
@@ -148,13 +156,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const $btnUpload = document.getElementById('btn-upload');
 
   $btnUpload.addEventListener('click', () => {
-    // $tableInput의 파일과 $tableName에 입력된 값을 출력
     const file = $tableInput.files[0];
     const tableName = $tableName.value;
 
     if (!file || !tableName) {
       showErrorMessage('올바른 파일과 테이블 이름을 입력해주세요.');
-      return null;
+      return;
     }
 
     if (file.type == 'application/json') {
@@ -164,8 +171,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         values = JSON.parse(e.target.result).map((value) =>
           Object.values(value),
         );
-        createTable(db, tableName, columns, values) &&
+        const state = createTable(db, tableName, columns, values);
+        if (state) {
           showAlertMessage(`${tableName} 테이블이 생성되었습니다`);
+          saveUploadedTable(tableName, columns, values);
+        }
       };
       reader.readAsText(file);
     } else if (file.type == 'text/csv') {
@@ -175,10 +185,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         const lines = csv.split('\n');
         const columns = lines[0].split(',');
         const values = lines.slice(1).map((line) => line.split(','));
-        createTable(db, tableName, columns, values) &&
+        const state = createTable(db, tableName, columns, values);
+        if (state) {
           showAlertMessage(`${tableName} 테이블이 생성되었습니다`);
+          saveUploadedTable(tableName, columns, values);
+        }
       };
       reader.readAsText(file);
     }
   });
 });
+
+function saveUploadedTable(name, columns, values) {
+  // table_name의 형태로 세션 스토리지에 저장
+  sessionStorage.setItem(`table_${name}`, JSON.stringify({ columns, values }));
+  const tableList = JSON.parse(sessionStorage.getItem('table_list')) || [];
+  tableList.push(name);
+  sessionStorage.setItem('table_list', JSON.stringify(tableList));
+}
