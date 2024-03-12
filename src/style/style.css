@@ -148,6 +148,9 @@ img {
   display: block;
   max-width: 100%; }
 
+* {
+  box-sizing: border-box; }
+
 :root,
 :root[color-theme='light'] {
   --ColorPrimary: #2f6ff2;
@@ -301,8 +304,7 @@ button {
   width: 5.6rem;
   height: 3.2rem;
   background: var(--ColorPrimary);
-  border-radius: 3.2rem;
-  box-sizing: border-box; }
+  border-radius: 3.2rem; }
   .btn-dark-mode::after {
     content: '';
     position: absolute;
@@ -442,7 +444,6 @@ button {
   height: 4.2rem;
   border-radius: 1rem;
   padding: 0.7rem;
-  box-sizing: border-box;
   position: relative; }
   .btn-kebab:hover, .btn-kebab.active {
     background: var(--ColorActivation); }
@@ -475,8 +476,7 @@ button {
   padding: 0.5rem;
   border-radius: 0.8rem;
   border: 1px solid var(--ColorGrayLv2);
-  background: var(--ColorGrayLv1);
-  box-sizing: border-box; }
+  background: var(--ColorGrayLv1); }
   .btn-link::after {
     content: '';
     display: block;
@@ -552,8 +552,7 @@ button {
   max-width: 26rem;
   word-break: break-word;
   z-index: 20;
-  animation: fadeIn 0.6s;
-  box-sizing: border-box; }
+  animation: fadeIn 0.6s; }
   .tooltip::before {
     content: '';
     position: absolute;
@@ -896,7 +895,6 @@ html {
   border-radius: 1rem;
   border: 1px solid var(--ColorPrimary);
   background: var(--ColorGrayLv1);
-  box-sizing: border-box;
   text-align: center;
   font-size: 1.4rem;
   font-style: normal;
@@ -912,7 +910,8 @@ html {
 
 .cont-filemodal {
   display: none;
-  min-width: 28rem;
+  width: 32rem;
+  max-width: 32rem;
   flex-direction: column;
   padding: 3.2rem;
   gap: 2.4rem;
@@ -943,7 +942,8 @@ html {
     right: 1.6rem; }
     .cont-filemodal .btn-close::after {
       background-color: var(--ColorGrayLv3); }
-  .cont-filemodal label {
+  .cont-filemodal label,
+  .cont-filemodal .label-tit {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -973,6 +973,7 @@ html {
       pointer-events: all; }
 
 #table-name {
+  height: 4.2rem;
   padding: 1.1rem 2rem;
   border: 1px solid var(--ColorGrayLv2);
   border-radius: 1rem; }
@@ -1235,8 +1236,7 @@ summary.hidden-before {
   background-color: var(--ColorBackground);
   align-items: center;
   overflow-y: scroll;
-  padding: 0 clamp(2.4rem, 7.55208vw, 14.5rem) clamp(3.2rem, 5.20833vw, 10rem) clamp(2.4rem, 7.55208vw, 14.5rem);
-  box-sizing: border-box; }
+  padding: 0 clamp(2.4rem, 7.55208vw, 14.5rem) clamp(3.2rem, 5.20833vw, 10rem) clamp(2.4rem, 7.55208vw, 14.5rem); }
   .tutorial-content::-webkit-scrollbar {
     width: 6px; }
   .tutorial-content::-webkit-scrollbar-thumb {

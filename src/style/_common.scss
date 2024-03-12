@@ -72,7 +72,6 @@ button {
   height: 3.2rem;
   background: var(--ColorPrimary);
   border-radius: 3.2rem;
-  box-sizing: border-box;
 
   &::after {
     content: '';
@@ -207,7 +206,6 @@ button {
   height: 4.2rem;
   border-radius: 1rem;
   padding: 0.7rem;
-  box-sizing: border-box;
   position: relative;
 
   &:hover,
@@ -238,7 +236,6 @@ button {
   border-radius: 0.8rem;
   border: 1px solid var(--ColorGrayLv2);
   background: var(--ColorGrayLv1);
-  box-sizing: border-box;
 
   &::after {
     content: '';
@@ -327,7 +324,6 @@ button {
   word-break: break-word;
   z-index: 20;
   animation: fadeIn 0.6s;
-  box-sizing: border-box;
 
   &::before {
     content: '';

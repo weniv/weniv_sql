@@ -197,7 +197,6 @@ html {
   border-radius: 1rem;
   border: 1px solid var(--ColorPrimary);
   background: var(--ColorGrayLv1);
-  box-sizing: border-box;
   text-align: center;
   font-size: 1.4rem;
   font-style: normal;
@@ -218,7 +217,8 @@ html {
 
 .cont-filemodal {
   display: none;
-  min-width: 28rem;
+  width: 32rem;
+  max-width: 32rem;
   flex-direction: column;
   padding: 3.2rem;
   gap: 2.4rem;
@@ -262,7 +262,8 @@ html {
     }
   }
 
-  label {
+  label,
+  .label-tit {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -302,6 +303,7 @@ html {
 }
 
 #table-name {
+  height: 4.2rem;
   padding: 1.1rem 2rem;
   border: 1px solid var(--ColorGrayLv2);
   border-radius: 1rem;

@@ -13,7 +13,6 @@
   overflow-y: scroll;
   padding: 0 clamp(2.4rem, 7.55208333333vw, 14.5rem)
     clamp(3.2rem, 5.2083333333vw, 10rem) clamp(2.4rem, 7.55208333333vw, 14.5rem);
-  box-sizing: border-box;
 
   &::-webkit-scrollbar {
     width: 6px;

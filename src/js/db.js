@@ -151,7 +151,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const $fileCont = document.querySelector('.cont-filemodal');
   const $tableName = document.getElementById('table-name');
   const $tableInput = document.getElementById('table-file');
-  const $tableLabel = document.querySelector('label[for="table-file"]');
   const $btnTableUpload = document.getElementById('btn-table-upload');
 
   const $closeBtn = $fileCont.querySelector('.btn-close');
@@ -172,7 +171,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   $tableInput.addEventListener('change', (e) => {
-    const csvType = document.getElementById('csv-type');
     const csvCont = document.querySelector('label[for="csv-type"]');
 
     $fileCont.querySelector('.file-name').textContent = e.target.files[0].name;
