@@ -216,7 +216,7 @@ html {
   }
 }
 
-.cont-fileupload {
+.cont-filemodal {
   display: none;
   min-width: 28rem;
   flex-direction: column;
@@ -232,11 +232,22 @@ html {
   right: 1rem;
   z-index: 10;
 
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-weight: 500;
+
+  button {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 500;
+  }
+
   &.show {
     display: flex;
   }
 
   h2 {
+    font-size: 1.6rem;
     font-weight: 600;
     text-align: center;
   }
@@ -259,12 +270,11 @@ html {
     font-weight: 600;
   }
 
-  .fileupload-cont {
+  .cont-fileupload {
     display: flex;
     gap: 1.2rem;
     flex-direction: column;
     font-weight: 500;
-    pointer-events: none;
 
     .file-info {
       display: flex;
@@ -273,6 +283,7 @@ html {
 
     .file-name {
       flex: 1;
+      width: 16rem;
       padding: 1.1rem 2rem;
       background-color: var(--ColorGrayLv2);
       border-radius: 1rem;
@@ -312,6 +323,10 @@ html {
 #csv-type {
   padding: 1.1rem 1.6rem;
   border-radius: 1rem;
+}
+
+label[for='csv-type'].hidden {
+  display: none;
 }
 
 #btn-upload {

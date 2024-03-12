@@ -261,12 +261,12 @@
                 <span class="sr-only">코드 다운로드</span>
               </button> -->
               <button
-                class="btn-table-modal show-tooltip"
+                class="btn-file-modal show-tooltip"
                 data-tooltip="테이블 업로드"
               >
                 <span class="sr-only">테이블 업로드</span>
               </button>
-              <section class="cont-fileupload">
+              <section class="cont-filemodal">
                 <h2>파일 업로드</h2>
                 <label for="table-name"
                   >테이블명
@@ -275,19 +275,19 @@
                     id="table-name"
                     placeholder="테이블명을 입력하세요."
                 /></label>
-                <div class="fileupload-cont">
+                <div class="cont-fileupload">
                   <label for="table-file"
                     >파일 업로드
                     <input type="file" id="table-file" accept=".csv, .json"
                   /></label>
                   <div class="file-info">
-                    <p class="file-name">data.csv</p>
+                    <p class="file-name sl-ellipsis"></p>
                     <button type="button" class="file-btn">파일 선택</button>
                   </div>
                 </div>
-                <label for="csv-type">
+                <label for="csv-type" class="hidden">
                   csv 구분자
-                  <select name="csv-type" id="csv-type" disabled>
+                  <select name="csv-type" id="csv-type">
                     <option value=",">콤마 ,</option>
                     <option value=";">세미콜론 ;</option>
                     <option value="|">파이프 |</option>

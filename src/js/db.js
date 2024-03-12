@@ -59,12 +59,6 @@ const getJsonToTable = async (db, name) => {
   createTable(db, name, columns, values);
 };
 
-const getSessionTable = (db, table) => {
-  const data = JSON.parse(sessionStorage.getItem(`table_${table}`));
-  createTable(db, table, data.columns, data.values);
-  console.log('session table', table);
-};
-
 const getResultTable = (data) => {
   const columns = data?.columns;
   const values = data?.values;
@@ -113,7 +107,6 @@ const showErrorMessage = (err) => {
   const errorMsg = document.querySelector('.error-msg');
   errorMsg.classList.remove('hidden');
   errorMsg.textContent = err;
-  console.log(err);
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -134,7 +127,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   tableList.map((file) => getJsonToTable(db, file));
 
   const sessionTableList = JSON.parse(sessionStorage.getItem('table_list'));
-  sessionTableList?.map((table) => getSessionTable(db, table));
 
   const runSQL = (db) => {
     try {
@@ -152,14 +144,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     runSQL(db);
   });
 
-  const $fileCont = document.querySelector('.cont-fileupload');
+  const $fileCont = document.querySelector('.cont-filemodal');
   const $tableName = document.getElementById('table-name');
   const $tableInput = document.getElementById('table-file');
   const $tableLabel = document.querySelector('label[for="table-file"]');
   const $btnUpload = document.getElementById('btn-upload');
 
   const $closeBtn = $fileCont.querySelector('.btn-close');
-  const $fileModalBtn = document.querySelector('.btn-table-modal');
+  const $fileModalBtn = document.querySelector('.btn-file-modal');
 
   window.addEventListener('click', (e) => {
     if (e.target === $fileModalBtn) {
@@ -175,27 +167,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  $tableLabel.addEventListener('change', (e) => {
-    console.log('change');
+  $tableInput.addEventListener('change', (e) => {
     const csvType = document.getElementById('csv-type');
+    const csvCont = document.querySelector('label[for="csv-type"]');
+
+    $fileCont.querySelector('.file-name').textContent = e.target.files[0].name;
 
     if (e.target.files[0].type == 'text/csv') {
-      csvType.removeAttribute('disabled');
+      csvCont.classList.remove('hidden');
     } else {
-      const csvType = document.getElementById('csv-type');
-      csvType.setAttribute('disabled', true);
+      csvCont.classList.add('hidden');
     }
-  });
-
-  $tableLabel.addEventListener('click', (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    console.log(e.target);
   });
 
   $btnUpload.addEventListener('click', () => {
     const file = $tableInput.files[0];
     const tableName = $tableName.value;
+    console.log('file', file);
+    console.log('name', tableName);
 
     if (!file || !tableName) {
       showErrorMessage('올바른 파일과 테이블 이름을 입력해주세요.');
