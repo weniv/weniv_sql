@@ -209,6 +209,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               `${tableName} 테이블이 생성되었습니다`,
             );
             hideMessage(alert, 2000);
+            resetUplaodForm();
           }
         };
         reader.readAsText(file);
@@ -226,6 +227,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               `${tableName} 테이블이 생성되었습니다`,
             );
             hideMessage(alert, 2000);
+            resetUplaodForm();
           }
         };
         reader.readAsText(file);
@@ -233,6 +235,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (err) {}
   });
 });
+
+function resetUplaodForm() {
+  document.getElementById('table-name').value = '';
+  document.getElementById('table-file').value = '';
+  document.querySelector('.cont-filemodal .file-name').textContent = '';
+}
 
 function saveUploadedTable(name, columns, values) {
   // table_name의 형태로 세션 스토리지에 저장
