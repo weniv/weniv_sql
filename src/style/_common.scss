@@ -440,6 +440,16 @@ td {
     content: '';
     @include mask-image(var(--ColorPrimary), '../assets/icon/icon-Check.svg');
   }
+
+  .btn-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    &::after {
+      background-color: var(--ColorError);
+    }
+  }
 }
 .alert-msg.hidden,
 .error-msg.hidden {

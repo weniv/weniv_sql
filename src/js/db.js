@@ -98,16 +98,20 @@ const showAlertMessage = (err) => {
   const alertMsg = document.querySelector('.alert-msg');
   alertMsg.classList.remove('hidden');
   alertMsg.textContent = err;
-  setTimeout(() => {
-    alertMsg.classList.add('hidden');
-  }, 2000);
+  return alertMsg;
 };
 
 const showErrorMessage = (err) => {
   const errorMsg = document.querySelector('.error-msg');
   errorMsg.classList.remove('hidden');
-  errorMsg.textContent = err;
+  errorMsg.firstElementChild.innerText = err;
+  return errorMsg;
 };
+const $errorCloseBtn = document.querySelector('.error-msg .btn-close');
+$errorCloseBtn.addEventListener('click', () => {
+  const errorMsg = document.querySelector('.error-msg');
+  errorMsg.classList.add('hidden');
+});
 
 document.addEventListener('DOMContentLoaded', async () => {
   const SQL = await initSqlJs({
@@ -148,7 +152,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const $tableName = document.getElementById('table-name');
   const $tableInput = document.getElementById('table-file');
   const $tableLabel = document.querySelector('label[for="table-file"]');
-  const $btnUpload = document.getElementById('btn-upload');
+  const $btnTableUpload = document.getElementById('btn-table-upload');
 
   const $closeBtn = $fileCont.querySelector('.btn-close');
   const $fileModalBtn = document.querySelector('.btn-file-modal');
@@ -180,47 +184,53 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  $btnUpload.addEventListener('click', () => {
+  $btnTableUpload.addEventListener('click', () => {
     const file = $tableInput.files[0];
     const tableName = $tableName.value;
     console.log('file', file);
     console.log('name', tableName);
 
     if (!file || !tableName) {
-      showErrorMessage('올바른 파일과 테이블 이름을 입력해주세요.');
+      const err = showErrorMessage('올바른 파일과 테이블 이름을 입력해주세요.');
+      hideMessage(err, 2000);
       return;
     }
-
-    if (file.type == 'application/json') {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        columns = Object.keys(JSON.parse(e.target.result)[0]);
-        values = JSON.parse(e.target.result).map((value) =>
-          Object.values(value),
-        );
-        const state = createTable(db, tableName, columns, values);
-        if (state) {
-          showAlertMessage(`${tableName} 테이블이 생성되었습니다`);
-          // saveUploadedTable(tableName, columns, values);
-        }
-      };
-      reader.readAsText(file);
-    } else if (file.type == 'text/csv') {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const csv = e.target.result;
-        const lines = csv.split('\n');
-        const type = document.getElementById('csv-type').value;
-        const columns = lines[0].split(type);
-        const values = lines.slice(1).map((line) => line.split(type));
-        const state = createTable(db, tableName, columns, values);
-        if (state) {
-          showAlertMessage(`${tableName} 테이블이 생성되었습니다`);
-          // saveUploadedTable(tableName, columns, values);
-        }
-      };
-      reader.readAsText(file);
-    }
+    try {
+      if (file.type == 'application/json') {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          columns = Object.keys(JSON.parse(e.target.result)[0]);
+          values = JSON.parse(e.target.result).map((value) =>
+            Object.values(value),
+          );
+          const state = createTable(db, tableName, columns, values);
+          if (state) {
+            const alert = showAlertMessage(
+              `${tableName} 테이블이 생성되었습니다`,
+            );
+            hideMessage(alert, 2000);
+          }
+        };
+        reader.readAsText(file);
+      } else if (file.type == 'text/csv') {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const csv = e.target.result;
+          const lines = csv.split('\n');
+          const type = document.getElementById('csv-type').value;
+          const columns = lines[0].split(type);
+          const values = lines.slice(1).map((line) => line.split(type));
+          const state = createTable(db, tableName, columns, values);
+          if (state) {
+            const alert = showAlertMessage(
+              `${tableName} 테이블이 생성되었습니다`,
+            );
+            hideMessage(alert, 2000);
+          }
+        };
+        reader.readAsText(file);
+      }
+    } catch (err) {}
   });
 });
 
@@ -230,4 +240,10 @@ function saveUploadedTable(name, columns, values) {
   const tableList = JSON.parse(sessionStorage.getItem('table_list')) || [];
   tableList.push(name);
   sessionStorage.setItem('table_list', JSON.stringify(tableList));
+}
+
+function hideMessage(elem, time) {
+  setTimeout(() => {
+    elem.classList.add('hidden');
+  }, time);
 }

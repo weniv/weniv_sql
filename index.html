@@ -293,7 +293,7 @@
                     <option value="|">파이프 |</option>
                   </select></label
                 >
-                <button id="btn-upload">업로드</button>
+                <button id="btn-table-upload">업로드</button>
                 <button class="btn-close">
                   <span class="sr-only">모달창 닫기</span>
                 </button>
@@ -346,7 +346,12 @@
           class="panel-item cont-result active"
         >
           <span class="alert-msg hidden"></span>
-          <span class="error-msg hidden"></span>
+          <span class="error-msg hidden">
+            <p class="msg"></p>
+            <button class="btn-close">
+              <span class="sr-only">오류 창 닫기</span>
+            </button>
+          </span>
           <table class="result-table"></table>
         </section>
         <section
