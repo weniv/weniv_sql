@@ -218,10 +218,10 @@ html {
 
 .cont-fileupload {
   display: none;
-  max-width: 28rem;
+  min-width: 28rem;
   flex-direction: column;
-  padding: 3.2rem 2.4rem 3.2rem;
-  gap: 1.6rem;
+  padding: 3.2rem;
+  gap: 2.4rem;
   border: 1px solid var(--ColorGrayLv2);
   background-color: var(--ColorBackground);
   border-radius: 1rem;
@@ -238,6 +238,7 @@ html {
 
   h2 {
     font-weight: 600;
+    text-align: center;
   }
 
   .btn-close {
@@ -253,39 +254,69 @@ html {
   label {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1.2rem;
     font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--ColorGrayLv4);
+    font-weight: 600;
   }
 
-  input[type='text'] {
-    padding: 1.1rem 1.6rem;
-    border: 1px solid var(--ColorGrayLv2);
-    border-radius: 1rem;
-  }
-
-  input[type='file'] {
-    padding: 1.1rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    border: 1px solid var(--ColorGrayLv2);
+  .fileupload-cont {
     display: flex;
+    gap: 1.2rem;
+    flex-direction: column;
+    font-weight: 500;
+    pointer-events: none;
 
-    &::before {
-      content: '';
+    .file-info {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .file-name {
+      flex: 1;
+      padding: 1.1rem 2rem;
+      background-color: var(--ColorGrayLv2);
+      border-radius: 1rem;
+      color: var(--ColorGrayLv4);
+    }
+
+    .file-btn {
+      padding: 1.1rem 1.8rem;
+      background-color: var(--ColorPrimary);
+      color: #fff;
+      border-radius: 1rem;
+      cursor: pointer;
+      pointer-events: all;
     }
   }
+}
 
-  #btn-upload {
-    padding: 1.1rem;
-    background-color: var(--ColorPrimary);
-    color: #fff;
-    border-radius: 1rem;
+#table-name {
+  padding: 1.1rem 2rem;
+  border: 1px solid var(--ColorGrayLv2);
+  border-radius: 1rem;
+}
+
+#table-file {
+  padding: 1.1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--ColorGrayLv2);
+  display: flex;
+  display: none;
+
+  &::before {
+    content: '';
   }
 }
 
 #csv-type {
   padding: 1.1rem 1.6rem;
+  border-radius: 1rem;
+}
+
+#btn-upload {
+  padding: 1.1rem;
+  background-color: var(--ColorPrimary);
+  color: #fff;
   border-radius: 1rem;
 }

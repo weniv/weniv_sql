@@ -261,12 +261,50 @@
                 <span class="sr-only">코드 다운로드</span>
               </button> -->
               <button
+                class="btn-table-modal show-tooltip"
+                data-tooltip="테이블 업로드"
+              >
+                <span class="sr-only">테이블 업로드</span>
+              </button>
+              <section class="cont-fileupload">
+                <h2>파일 업로드</h2>
+                <label for="table-name"
+                  >테이블명
+                  <input
+                    type="text"
+                    id="table-name"
+                    placeholder="테이블명을 입력하세요."
+                /></label>
+                <div class="fileupload-cont">
+                  <label for="table-file"
+                    >파일 업로드
+                    <input type="file" id="table-file" accept=".csv, .json"
+                  /></label>
+                  <div class="file-info">
+                    <p class="file-name">data.csv</p>
+                    <button type="button" class="file-btn">파일 선택</button>
+                  </div>
+                </div>
+                <label for="csv-type">
+                  csv 구분자
+                  <select name="csv-type" id="csv-type" disabled>
+                    <option value=",">콤마 ,</option>
+                    <option value=";">세미콜론 ;</option>
+                    <option value="|">파이프 |</option>
+                  </select></label
+                >
+                <button id="btn-upload">업로드</button>
+                <button class="btn-close">
+                  <span class="sr-only">모달창 닫기</span>
+                </button>
+              </section>
+              <div class="line"></div>
+              <button
                 class="btn-copy show-tooltip"
                 data-tooltip="코드 복사하기"
               >
                 <span class="sr-only">코드 복사하기</span>
               </button>
-              <div class="line"></div>
               <button class="btn-reset show-tooltip" data-tooltip="코드 초기화">
                 <span class="sr-only">코드 초기화</span>
               </button>
@@ -274,28 +312,7 @@
           </div>
           <button class="run-btn">Run SQL</button>
         </section>
-        <section class="cont-fileupload show">
-          <h2>파일 업로드</h2>
-          <label for="table-name"
-            >테이블명 <input type="text" id="table-name"
-          /></label>
-          <label for="table-input"
-            >파일 업로드
-            <input type="file" id="table-input" accept=".csv, .json"
-          /></label>
-          <label for="csv-type">
-            csv 구분자
-            <select name="csv-type" id="csv-type" disabled>
-              <option value="," default>콤마 ,</option>
-              <option value=";">세미콜론 ;</option>
-              <option value="|">파이프 |</option>
-            </select></label
-          >
-          <button id="btn-upload">업로드</button>
-          <button class="btn-close">
-            <span class="sr-only">모달창 닫기</span>
-          </button>
-        </section>
+
         <section class="cont-table"></section>
         <ul class="tab-list" role="tablist">
           <li
@@ -405,7 +422,7 @@
         </section>
         <section class="weniv-info">
           <button type="button" class="info-toggle-btn">
-            <h3>WENIV Inc. business information</h3>
+            WENIV Inc. business information
           </button>
           <dl>
             <div class="sort">
@@ -428,7 +445,7 @@
         </section>
         <ul class="link-list">
           <li>
-            <a href="https://paullab.co.kr/" class="btn-link" blank="_target">
+            <a href="https://paullab.co.kr/" class="btn-link" target="_blank">
               <span class="sr-only">Home</span>
             </a>
           </li>
@@ -436,7 +453,7 @@
             <a
               href="https://www.inflearn.com/users/@jejucoding"
               class="btn-link link-inflearn"
-              blank="_target"
+              target="_blank"
             >
               <span class="sr-only">Inflearn</span>
             </a>
@@ -445,7 +462,7 @@
             <a
               href="https://www.youtube.com/@jejucodingcamp"
               class="btn-link link-youtube"
-              blank="_target"
+              target="_blank"
             >
               <span class="sr-only">Youtube</span>
             </a>
@@ -454,7 +471,7 @@
             <a
               href="https://blog.naver.com/paul-lab"
               class="btn-link link-naver"
-              blank="_target"
+              target="_blank"
             >
               <span class="sr-only">Naver blog</span>
             </a>
@@ -463,7 +480,7 @@
             <a
               href="https://www.instagram.com/weniv_official/"
               class="btn-link link-insta"
-              blank="_target"
+              target="_blank"
             >
               <span class="sr-only">Instagram</span>
             </a>

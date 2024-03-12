@@ -352,6 +352,28 @@ button {
       background: var(--ColorSurface); } }
 
 /* copy 버튼 */
+.btn-table-modal {
+  width: 2rem;
+  height: 2rem;
+  display: flex; }
+  .btn-table-modal::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: var(--ColorGrayLv3);
+    -webkit-mask-image: url("../assets/icon/icon-file-upload.svg");
+    -webkit-mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-image: url("../assets/icon/icon-file-upload.svg");
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center center; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-table-modal:hover::after {
+      background: var(--ColorSurface); } }
+
+/* copy 버튼 */
 .btn-copy {
   width: 2rem;
   height: 2rem;
@@ -882,10 +904,10 @@ html {
 
 .cont-fileupload {
   display: none;
-  max-width: 28rem;
+  min-width: 28rem;
   flex-direction: column;
-  padding: 3.2rem 2.4rem 3.2rem;
-  gap: 1.6rem;
+  padding: 3.2rem;
+  gap: 2.4rem;
   border: 1px solid var(--ColorGrayLv2);
   background-color: var(--ColorBackground);
   border-radius: 1rem;
@@ -897,7 +919,8 @@ html {
   .cont-fileupload.show {
     display: flex; }
   .cont-fileupload h2 {
-    font-weight: 600; }
+    font-weight: 600;
+    text-align: center; }
   .cont-fileupload .btn-close {
     position: absolute;
     top: 1.6rem;
@@ -907,30 +930,55 @@ html {
   .cont-fileupload label {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1.2rem;
     font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--ColorGrayLv4); }
-  .cont-fileupload input[type='text'] {
-    padding: 1.1rem 1.6rem;
-    border: 1px solid var(--ColorGrayLv2);
-    border-radius: 1rem; }
-  .cont-fileupload input[type='file'] {
-    padding: 1.1rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    border: 1px solid var(--ColorGrayLv2);
-    display: flex; }
-    .cont-fileupload input[type='file']::before {
-      content: ''; }
-  .cont-fileupload #btn-upload {
-    padding: 1.1rem;
-    background-color: var(--ColorPrimary);
-    color: #fff;
-    border-radius: 1rem; }
+    font-weight: 600; }
+  .cont-fileupload .fileupload-cont {
+    display: flex;
+    gap: 1.2rem;
+    flex-direction: column;
+    font-weight: 500;
+    pointer-events: none; }
+    .cont-fileupload .fileupload-cont .file-info {
+      display: flex;
+      gap: 0.8rem; }
+    .cont-fileupload .fileupload-cont .file-name {
+      flex: 1;
+      padding: 1.1rem 2rem;
+      background-color: var(--ColorGrayLv2);
+      border-radius: 1rem;
+      color: var(--ColorGrayLv4); }
+    .cont-fileupload .fileupload-cont .file-btn {
+      padding: 1.1rem 1.8rem;
+      background-color: var(--ColorPrimary);
+      color: #fff;
+      border-radius: 1rem;
+      cursor: pointer;
+      pointer-events: all; }
+
+#table-name {
+  padding: 1.1rem 2rem;
+  border: 1px solid var(--ColorGrayLv2);
+  border-radius: 1rem; }
+
+#table-file {
+  padding: 1.1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--ColorGrayLv2);
+  display: flex;
+  display: none; }
+  #table-file::before {
+    content: ''; }
 
 #csv-type {
   padding: 1.1rem 1.6rem;
+  border-radius: 1rem; }
+
+#btn-upload {
+  padding: 1.1rem;
+  background-color: var(--ColorPrimary);
+  color: #fff;
   border-radius: 1rem; }
 
 .footer {

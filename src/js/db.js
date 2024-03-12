@@ -153,13 +153,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   const $fileCont = document.querySelector('.cont-fileupload');
-  const $tableInput = document.getElementById('table-input');
   const $tableName = document.getElementById('table-name');
+  const $tableInput = document.getElementById('table-file');
+  const $tableLabel = document.querySelector('label[for="table-file"]');
   const $btnUpload = document.getElementById('btn-upload');
 
   const $closeBtn = $fileCont.querySelector('.btn-close');
+  const $fileModalBtn = document.querySelector('.btn-table-modal');
+
   window.addEventListener('click', (e) => {
-    if ($fileCont.classList.contains('show')) {
+    if (e.target === $fileModalBtn) {
+      $fileCont.classList.toggle('show');
+    } else if ($fileCont.classList.contains('show')) {
       if (e.target === $closeBtn) {
         $fileCont.classList.remove('show');
       } else if ($fileCont.contains(e.target)) {
@@ -170,7 +175,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  $tableInput.addEventListener('change', (e) => {
+  $tableLabel.addEventListener('change', (e) => {
+    console.log('change');
     const csvType = document.getElementById('csv-type');
 
     if (e.target.files[0].type == 'text/csv') {
@@ -179,6 +185,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       const csvType = document.getElementById('csv-type');
       csvType.setAttribute('disabled', true);
     }
+  });
+
+  $tableLabel.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(e.target);
   });
 
   $btnUpload.addEventListener('click', () => {
