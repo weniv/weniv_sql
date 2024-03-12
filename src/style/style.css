@@ -989,7 +989,15 @@ html {
 
 #csv-type {
   padding: 1.1rem 1.6rem;
-  border-radius: 1rem; }
+  border-radius: 1rem;
+  border: 1px solid var(--ColorGrayLv2);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("../assets/icon/icon-down.svg") no-repeat 95% 50%/1.6rem; }
+
+#csv-type::-ms-expand {
+  display: none; }
 
 label[for='csv-type'].hidden {
   display: none; }
