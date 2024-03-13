@@ -72,7 +72,6 @@ button {
   height: 3.2rem;
   background: var(--ColorPrimary);
   border-radius: 3.2rem;
-  box-sizing: border-box;
 
   &::after {
     content: '';
@@ -126,6 +125,28 @@ button {
   }
 }
 
+/* copy 버튼 */
+.btn-file-modal {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    @include mask-image(
+      var(--ColorGrayLv3),
+      '../assets/icon/icon-file-upload.svg'
+    );
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover::after {
+      background: var(--ColorSurface);
+    }
+  }
+}
 /* copy 버튼 */
 .btn-copy {
   width: 2rem;
@@ -185,7 +206,6 @@ button {
   height: 4.2rem;
   border-radius: 1rem;
   padding: 0.7rem;
-  box-sizing: border-box;
   position: relative;
 
   &:hover,
@@ -216,7 +236,6 @@ button {
   border-radius: 0.8rem;
   border: 1px solid var(--ColorGrayLv2);
   background: var(--ColorGrayLv1);
-  box-sizing: border-box;
 
   &::after {
     content: '';
@@ -305,7 +324,6 @@ button {
   word-break: break-word;
   z-index: 20;
   animation: fadeIn 0.6s;
-  box-sizing: border-box;
 
   &::before {
     content: '';
@@ -398,9 +416,10 @@ td {
 }
 
 /* Error Message */
+.alert-msg,
 .error-msg {
   display: block;
-  border: 2px solid var(--ColorError);
+  border: 2px solid var(--ColorPrimary);
   width: auto;
   text-align: left;
   padding: 1.5rem;
@@ -415,14 +434,34 @@ td {
     width: 2.4rem;
     height: 2.4rem;
     content: '';
+    @include mask-image(var(--ColorPrimary), '../assets/icon/icon-Check.svg');
+  }
+
+  .btn-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    &::after {
+      background-color: var(--ColorError);
+    }
+  }
+}
+.alert-msg.hidden,
+.error-msg.hidden {
+  display: none;
+}
+
+/* Error Message */
+.error-msg {
+  border: 2px solid var(--ColorError);
+
+  &::before {
     @include mask-image(
       var(--ColorError),
       '../assets/icon/icon-alert-circle.svg'
     );
   }
-}
-.error-msg.hidden {
-  display: none;
 }
 
 .CodeMirror-hints {
