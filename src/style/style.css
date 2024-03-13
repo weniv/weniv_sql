@@ -1143,6 +1143,7 @@ label[for='csv-type'].hidden {
       position: static; } }
 
 aside {
+  position: relative;
   width: 32rem;
   height: calc(100vh - 7rem);
   left: 0;
@@ -1160,7 +1161,8 @@ aside {
   aside::-webkit-scrollbar-track {
     margin-top: 5px;
     background-color: transparent; }
-  aside .list-wrap > h3 {
+  aside .list-wrap > h3,
+  aside .download-wrap > h3 {
     display: flex;
     font-size: 1.4rem;
     font-weight: 600;
@@ -1194,9 +1196,14 @@ aside {
     .list-item summary::-webkit-details-marker {
       display: block; }
     .list-item summary::before {
-      content: url("../assets/icon/icon-chapter-btn.svg");
+      content: url("../assets/icon/icon-chapter-lightmode-btn.svg");
       transition: 0.25s transform;
       transform: rotateZ(-90deg); }
+    @media (prefers-color-scheme: dark) {
+      .list-item summary::before {
+        content: url("../assets/icon/icon-chapter-darkmode-btn.svg");
+        transition: 0.25s transform;
+        transform: rotateZ(-90deg); } }
   .list-item details[open] summary:before {
     transform: rotateZ(0deg); }
 
@@ -1223,6 +1230,30 @@ summary.hidden-before {
     width: 100%;
     padding: 0.9rem;
     padding-left: 2.1rem; }
+
+.download-wrap {
+  width: 100%;
+  margin-top: 4rem; }
+  .download-wrap a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.9rem 2.1rem;
+    box-sizing: border-box; }
+    .download-wrap a:hover {
+      background-color: var(--ColorActivation); }
+    .download-wrap a::after {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      background-image: url(../assets/icon/icon-download.svg);
+      background-size: contain; }
+  .download-wrap button {
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--ColorSurface); }
 
 .tutorial-content-wrap {
   display: flex;
