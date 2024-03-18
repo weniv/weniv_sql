@@ -359,7 +359,22 @@
         return [Number(title[0]), title.slice(1).join(' ')];
       });
 
-    // console.log(menuTitles);
+    // console.log(menuTitles);s
+
+    // aside 접는 버튼 추가
+    const aside = document.querySelector('aside');
+    const asideCloseBtn = document.createElement('button');
+    const asideOpenBtn = document.querySelector('.aside-open-button');
+    asideCloseBtn.classList.add('aside-folder-button');
+    aside.prepend(asideCloseBtn);
+
+    asideCloseBtn.addEventListener('click', () => {
+      aside.classList.add('aside-close');
+    });
+
+    asideOpenBtn.addEventListener('click', () => {
+      aside.classList.remove('aside-close');
+    });
 
     let subMenu = null;
 
@@ -407,8 +422,8 @@
       }
     });
 
-    const aside = document.querySelector(`aside > ul > .list-wrap`);
-    aside.appendChild(mainList);
+    const asideList = document.querySelector(`aside > ul > .list-wrap`);
+    asideList.appendChild(mainList);
   };
 
   const renderContent = (html) => {

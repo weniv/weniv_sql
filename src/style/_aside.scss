@@ -1,11 +1,12 @@
 aside {
   position: relative;
-  width: 32rem;
+  width: clamp(28rem, 26.8907563025vw, 32rem);
   height: calc(100vh - 7rem);
-  left: 0;
   border-right: 1px solid var(--ColorGrayLv2);
   box-sizing: border-box;
   overflow: auto;
+  z-index: 9;
+  background-color: var(--ColorBackground);
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -40,6 +41,10 @@ aside {
   //   color: var(--ColorPrimary);
   //   font-weight: 700;
   // }
+}
+
+.aside-open-button {
+  display: none;
 }
 
 .list-item {
@@ -159,5 +164,39 @@ summary.hidden-before {
     font-weight: 400;
     font-size: 1.6rem;
     color: var(--ColorSurface);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  main {
+    margin-top: 4rem;
+  }
+  aside {
+    margin-left: 0;
+    transition: margin-left 0.3s;
+
+    .aside-folder-button {
+      position: absolute;
+      width: 2.4rem;
+      height: 2.4rem;
+      background-image: url('../assets/icon/icon-side-close-left.svg');
+      top: 1.3rem;
+      right: 1.5rem;
+    }
+  }
+
+  .aside-close {
+    margin-left: -32rem;
+    transition: margin-left 0.3s;
+  }
+
+  .aside-open-button {
+    display: block;
+    position: absolute;
+    width: 4.2rem;
+    height: 4.2rem;
+    background-color: pink;
+    top: 8.7rem;
+    left: 2rem;
   }
 }
