@@ -359,21 +359,22 @@
         return [Number(title[0]), title.slice(1).join(' ')];
       });
 
-    // console.log(menuTitles);s
-
     // aside 접는 버튼 추가
+    const asideWrap = document.querySelector('.tutorial-content-wrap');
     const aside = document.querySelector('aside');
     const asideCloseBtn = document.createElement('button');
-    const asideOpenBtn = document.querySelector('.aside-open-button');
+    const asideOpenBtn = document.createElement('button');
+    asideOpenBtn.classList.add('aside-open-button');
+    asideWrap.append(asideOpenBtn);
     asideCloseBtn.classList.add('aside-folder-button');
     aside.prepend(asideCloseBtn);
 
     asideCloseBtn.addEventListener('click', () => {
-      aside.classList.add('aside-close');
+      aside.classList.remove('aside-open');
     });
 
     asideOpenBtn.addEventListener('click', () => {
-      aside.classList.remove('aside-close');
+      aside.classList.add('aside-open');
     });
 
     let subMenu = null;

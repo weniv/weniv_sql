@@ -1334,7 +1334,7 @@ label[for=csv-type].hidden {
 
 aside {
   position: relative;
-  width: clamp(28rem, 26.8907563025vw, 32rem);
+  width: 32rem;
   height: calc(100vh - 7rem);
   border-right: 1px solid var(--ColorGrayLv2);
   box-sizing: border-box;
@@ -1386,7 +1386,7 @@ aside .download-wrap > h3 {
   display: flex;
   align-items: center;
   list-style-type: none;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 500;
   position: relative;
   padding: 9px;
@@ -1477,7 +1477,7 @@ summary.hidden-before a {
 
 @media screen and (max-width: 1024px) {
   aside {
-    margin-left: 0;
+    margin-left: -32rem;
     transition: margin-left 0.3s;
   }
   aside .aside-folder-button {
@@ -1488,8 +1488,8 @@ summary.hidden-before a {
     top: 1.3rem;
     right: 1.5rem;
   }
-  .aside-close {
-    margin-left: -32rem;
+  .aside-open {
+    margin-left: 0rem;
     transition: margin-left 0.3s;
   }
   .aside-open-button {
