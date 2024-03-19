@@ -838,7 +838,6 @@ li.CodeMirror-hint-active {
 }
 
 .fixed-header {
-  position: fixed;
   width: 100%;
   background-color: var(--ColorBackground);
 }
@@ -1477,9 +1476,6 @@ summary.hidden-before a {
 }
 
 @media screen and (max-width: 1024px) {
-  main {
-    margin-top: 4rem;
-  }
   aside {
     margin-left: 0;
     transition: margin-left 0.3s;
@@ -1499,25 +1495,28 @@ summary.hidden-before a {
   .aside-open-button {
     display: block;
     position: absolute;
+    background-image: url(../assets/icon/icon-chapter.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2.4rem 2.4rem;
     width: 4.2rem;
     height: 4.2rem;
-    background-color: pink;
-    top: 8.7rem;
+    background-color: var(--ColorBackground);
+    border: 1px solid var(--ColorGrayLv2);
+    border-radius: 0.625em;
     left: 2rem;
+    margin-top: 1.4rem;
   }
 }
 .tutorial-content-wrap {
   display: flex;
-  margin-top: 7rem;
+  justify-content: space-between;
   height: calc(100vh - 7rem);
 }
 
 .tutorial-content {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   background-color: var(--ColorBackground);
-  align-items: center;
   overflow-y: scroll;
   padding: 0 clamp(2.4rem, 7.5520833333vw, 14.5rem) clamp(3.2rem, 5.2083333333vw, 10rem) clamp(2.4rem, 7.5520833333vw, 14.5rem);
 }
@@ -1584,6 +1583,11 @@ summary.hidden-before a {
   background-color: var(--ColorGrayLv1);
 }
 
+@media screen and (max-width: 1024px) {
+  .tutorial-content {
+    padding: clamp(3.2rem, 5.2083333333vw, 10rem) clamp(2.4rem, 7.5520833333vw, 14.5rem);
+  }
+}
 h2.tuto-title {
   font-weight: 700;
   font-size: 4rem;

@@ -168,9 +168,6 @@ summary.hidden-before {
 }
 
 @media screen and (max-width: 1024px) {
-  main {
-    margin-top: 4rem;
-  }
   aside {
     margin-left: 0;
     transition: margin-left 0.3s;
@@ -193,10 +190,16 @@ summary.hidden-before {
   .aside-open-button {
     display: block;
     position: absolute;
+    background-image: url(../assets/icon/icon-chapter.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2.4rem 2.4rem;
     width: 4.2rem;
     height: 4.2rem;
-    background-color: pink;
-    top: 8.7rem;
+    background-color: var(--ColorBackground);
+    border: 1px solid var(--ColorGrayLv2);
+    border-radius: 0.625em;
     left: 2rem;
+    margin-top: 1.4rem;
   }
 }
