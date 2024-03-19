@@ -359,11 +359,12 @@
         return [Number(title[0]), title.slice(1).join(' ')];
       });
 
-    // aside 접는 버튼 추가
     const asideWrap = document.querySelector('.tutorial-content-wrap');
     const aside = document.querySelector('aside');
     const asideCloseBtn = document.createElement('button');
     const asideOpenBtn = document.createElement('button');
+    const dim = document.createElement('div');
+    dim.classList.add('dim');
     asideOpenBtn.classList.add('aside-open-button');
     asideWrap.append(asideOpenBtn);
     asideCloseBtn.classList.add('aside-folder-button');
@@ -371,10 +372,12 @@
 
     asideCloseBtn.addEventListener('click', () => {
       aside.classList.remove('aside-open');
+      dim.remove();
     });
 
     asideOpenBtn.addEventListener('click', () => {
       aside.classList.add('aside-open');
+      asideWrap.append(dim);
     });
 
     let subMenu = null;

@@ -1334,7 +1334,7 @@ label[for=csv-type].hidden {
 
 aside {
   position: relative;
-  width: 32rem;
+  width: clamp(28rem, 26.8907563025vw, 32rem);
   height: calc(100vh - 7rem);
   border-right: 1px solid var(--ColorGrayLv2);
   box-sizing: border-box;
@@ -1477,8 +1477,12 @@ summary.hidden-before a {
 
 @media screen and (max-width: 1024px) {
   aside {
+    position: absolute;
+    top: 0;
+    height: 100vh;
     margin-left: -32rem;
     transition: margin-left 0.3s;
+    z-index: 999;
   }
   aside .aside-folder-button {
     position: absolute;
@@ -1489,7 +1493,7 @@ summary.hidden-before a {
     right: 1.5rem;
   }
   .aside-open {
-    margin-left: 0rem;
+    margin-left: 0;
     transition: margin-left 0.3s;
   }
   .aside-open-button {
@@ -1506,8 +1510,22 @@ summary.hidden-before a {
     border-radius: 0.625em;
     left: 2rem;
     margin-top: 1.4rem;
+    z-index: 990;
   }
 }
+.dim {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  animation: fadeIn 0.2s;
+}
+
 .tutorial-content-wrap {
   display: flex;
   justify-content: space-between;
