@@ -658,6 +658,9 @@ button {
   fill: var(--ColorPrimary);
 }
 
+.svg-graylv3 {
+  fill: var(--ColorGrayLv3); }
+
 .svg-graylv4 {
   fill: var(--ColorGrayLv4);
 }
