@@ -1,11 +1,12 @@
 aside {
   position: relative;
-  width: 32rem;
+  width: clamp(28rem, 26.8907563025vw, 32rem);
   height: calc(100vh - 7rem);
-  left: 0;
   border-right: 1px solid var(--ColorGrayLv2);
   box-sizing: border-box;
   overflow: auto;
+  z-index: 9;
+  background-color: var(--ColorBackground);
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -42,6 +43,10 @@ aside {
   // }
 }
 
+.aside-open-button {
+  display: none;
+}
+
 .list-item {
   font-size: 1.6rem;
   line-height: 2.2rem;
@@ -58,7 +63,7 @@ aside {
     display: flex;
     align-items: center;
     list-style-type: none;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 500;
     position: relative;
     padding: 9px;
@@ -160,4 +165,59 @@ summary.hidden-before {
     font-size: 1.6rem;
     color: var(--ColorSurface);
   }
+}
+
+@media screen and (max-width: 1024px) {
+  aside {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    margin-left: -32rem;
+    transition: margin-left 0.3s;
+    z-index: 999;
+
+    .aside-folder-button {
+      position: absolute;
+      width: 2.4rem;
+      height: 2.4rem;
+      background-image: url('../assets/icon/icon-side-close-left.svg');
+      top: 1.3rem;
+      right: 1.5rem;
+    }
+  }
+
+  .aside-open {
+    margin-left: 0;
+    transition: margin-left 0.3s;
+  }
+
+  .aside-open-button {
+    display: block;
+    position: absolute;
+    background-image: url(../assets/icon/icon-chapter.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2.4rem 2.4rem;
+    width: 4.2rem;
+    height: 4.2rem;
+    background-color: var(--ColorBackground);
+    border: 1px solid var(--ColorGrayLv2);
+    border-radius: 0.625em;
+    left: 2rem;
+    margin-top: 1.4rem;
+    z-index: 990;
+  }
+}
+
+.dim {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  animation: fadeIn 0.2s;
 }
