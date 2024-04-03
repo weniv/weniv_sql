@@ -135,6 +135,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const runSQL = (db) => {
     try {
       const sqlStr = window.editor.getValue();
+      gtag('event', 'run_sql', {
+        sql_code: sqlStr,
+      });
       const res = db.exec(sqlStr)[0];
       res && getResultTable(res);
     } catch (err) {
