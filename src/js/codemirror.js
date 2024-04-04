@@ -26,23 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   );
   window.editor.setValue('SELECT * FROM 상품;');
-
-  window.editor.on('keydown', (cm, event) => {
-    // Shift+ Enter이면 코드 실행
-    if (event.keyCode === 13 && event.shiftKey) {
-      const runBtn = document.querySelector('.run-btn');
-      runBtn.click();
-      event.preventDefault();
-    }
-    // a~z, 1~F12, delete~9
-    if (
-      (event.keyCode >= 65 && event.keyCode <= 90) ||
-      (event.keyCode >= 97 && event.keyCode <= 122) ||
-      (event.keyCode >= 46 && event.keyCode <= 57)
-    ) {
-      CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
-    }
-  });
 });
 
 const SQLTableList = {
