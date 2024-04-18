@@ -115,7 +115,8 @@ $errorCloseBtn.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', async () => {
   const SQL = await initSqlJs({
-    locateFile: (file) => `https://sql.js.org/dist/${file}`,
+    locateFile: (file) =>
+      `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${file}`,
   });
   const db = new SQL.Database();
 
