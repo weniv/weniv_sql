@@ -379,16 +379,27 @@
     asideCloseBtn.classList.add('aside-folder-button');
     aside.prepend(asideCloseBtn);
 
-    // aside 닫기
-    asideCloseBtn.addEventListener('click', () => {
-      aside.classList.remove('aside-open');
-      dim.remove();
+    window.addEventListener('click', (e) => {
+      if (e.target === asideOpenBtn) {
+        aside.classList.add('aside-open');
+        asideWrap.append(dim);
+      } else if (e.target === asideCloseBtn) {
+        aside.classList.remove('aside-open');
+        dim.remove();
+      } else if (
+        aside.classList.contains('aside-open') &&
+        !aside.contains(e.target)
+      ) {
+        aside.classList.remove('aside-open');
+        dim.remove();
+      }
     });
 
-    // aside 열기
-    asideOpenBtn.addEventListener('click', () => {
-      aside.classList.add('aside-open');
-      asideWrap.append(dim);
+    window.addEventListener('resize', (e) => {
+      if (window.innerWidth > 1024) {
+        aside.classList.remove('aside-open');
+        dim.remove();
+      }
     });
 
     let subMenu = null;
