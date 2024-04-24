@@ -339,16 +339,25 @@
     return tokens.filter(Boolean);
   };
 
+  /**
+   * 페이지의 markdown 파일을 가져옴
+   * @async
+   * @function fetchMarkdown
+   * @returns {Promise<string>} - 페이지의 markdown 내용을 담은 문자열을 반환하는 프로미스
+   */
   const fetchMarkdown = async () => {
     const res = await fetch(
       `${window.location.origin}/src/md/${PAGE_NAME}/article.md`,
     );
 
     const markdown = await res.text();
-    // console.log(markdown);
     return markdown;
   };
 
+  /**
+   * 주어진 HTML 내용을 기반으로 메뉴를 렌더링
+   * @param {string[]} html - HTML 내용을 담은 문자열 배열
+   */
   const renderMenu = (html) => {
     const menuTitles = html
       .filter((v) => /<h\d.+>/.test(v))
@@ -359,25 +368,38 @@
         return [Number(title[0]), title.slice(1).join(' ')];
       });
 
-    const asideWrap = document.querySelector('.tutorial-content-wrap');
-    const aside = document.querySelector('aside');
-    const asideCloseBtn = document.createElement('button');
-    const asideOpenBtn = document.createElement('button');
-    const dim = document.createElement('div');
+    const asideWrap = document.querySelector('.tutorial-content-wrap'); // 페이지 전체를 감싸는 div
+    const aside = document.querySelector('aside'); // 사이드바(목차)
+    const asideCloseBtn = document.createElement('button'); // aside 닫기 버튼
+    const asideOpenBtn = document.createElement('button'); // aside 열기 버튼
+    const dim = document.createElement('div'); // dim(aside open시 음영처리 위함)
     dim.classList.add('dim');
     asideOpenBtn.classList.add('aside-open-button');
     asideWrap.append(asideOpenBtn);
     asideCloseBtn.classList.add('aside-folder-button');
     aside.prepend(asideCloseBtn);
 
-    asideCloseBtn.addEventListener('click', () => {
-      aside.classList.remove('aside-open');
-      dim.remove();
+    window.addEventListener('click', (e) => {
+      if (e.target === asideOpenBtn) {
+        aside.classList.add('aside-open');
+        asideWrap.append(dim);
+      } else if (e.target === asideCloseBtn) {
+        aside.classList.remove('aside-open');
+        dim.remove();
+      } else if (
+        aside.classList.contains('aside-open') &&
+        !aside.contains(e.target)
+      ) {
+        aside.classList.remove('aside-open');
+        dim.remove();
+      }
     });
 
-    asideOpenBtn.addEventListener('click', () => {
-      aside.classList.add('aside-open');
-      asideWrap.append(dim);
+    window.addEventListener('resize', (e) => {
+      if (window.innerWidth > 1024) {
+        aside.classList.remove('aside-open');
+        dim.remove();
+      }
     });
 
     let subMenu = null;
@@ -387,6 +409,7 @@
 
     // let activeMenuItem = null;
 
+    // aside 내부 메뉴 리스트 추가
     menuTitles.forEach(([depth, title]) => {
       if (depth === 2) {
         const item = document.createElement('details');

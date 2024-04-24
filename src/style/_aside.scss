@@ -167,6 +167,9 @@ summary.hidden-before {
   }
 }
 
+.dim {
+  display: none;
+}
 @media screen and (max-width: 1024px) {
   aside {
     position: absolute;
@@ -184,6 +187,9 @@ summary.hidden-before {
       top: 1.3rem;
       right: 1.5rem;
     }
+  }
+  .dim {
+    display: block;
   }
 
   .aside-open {
