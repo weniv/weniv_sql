@@ -22,7 +22,6 @@ function collectPageView() {
 window.addEventListener('load', collectPageView);
 
 function collectAnchorClick(event) {
-  console.log(event);
   const session_id = sessionStorage.getItem('session_id');
 
   const source_url = window.location.href;
@@ -42,7 +41,6 @@ function collectAnchorClick(event) {
       }
       return response.json();
     })
-    .then((data) => console.log(data))
     .catch((error) => console.error('Error:', error));
 }
 
