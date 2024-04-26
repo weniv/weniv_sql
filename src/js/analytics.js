@@ -25,34 +25,39 @@ window.addEventListener('load', () => {
 });
 
 function collectAnchorClick(event) {
-  const session_id = sessionStorage.getItem('session_id');
+  const ANCHOR = event.target.closest('a');
+  if (ANCHOR) {
+    event.preventDefault(); // 기본 동작 막기
 
-  const source_url = window.location.href;
-  const target_url = event.target.closest('a').href;
+    const session_id = sessionStorage.getItem('session_id');
 
-  fetch(`${BASE_URL}/collect/anchor-click`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Session-Id': session_id,
-    },
-    body: JSON.stringify({ source_url, target_url }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
+    const source_url = window.location.href;
+    const target_url = ANCHOR.href;
+    const target_tar = ANCHOR.target || '_self';
+
+    fetch(`${BASE_URL}/collect/anchor-click`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Session-Id': session_id,
+      },
+      body: JSON.stringify({ source_url, target_url }),
     })
-    .catch((error) => console.error('Error:', error));
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        window.open(target_url, target_tar);
+      })
+      .catch((error) => console.error('Error:', error));
+  }
 }
 
-window.addEventListener('click', (event) => {
+document.addEventListener('click', (event) => {
   if (event.target.closest('a')) {
     collectAnchorClick(event);
   }
 });
-
-function collectReferralUrl(event) {
-  console.log('ref', document.referrer);
-}
