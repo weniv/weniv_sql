@@ -19,10 +19,7 @@ function collectPageView() {
     })
     .catch((error) => console.error('Error:', error));
 }
-window.addEventListener('load', () => {
-  collectPageView();
-  collectReferralUrl();
-});
+window.addEventListener('load', collectPageView);
 
 function collectAnchorClick(event) {
   const ANCHOR = event.target.closest('a');
