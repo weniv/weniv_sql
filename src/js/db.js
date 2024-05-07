@@ -68,6 +68,20 @@ const getResultTable = (data) => {
 
   const table = document.querySelector('.result-table');
   table.innerHTML = '';
+  if (!data) {
+    table.innerHTML = `
+    <thead>
+      <tr>
+        <th>결과</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>조회된 결과가 없습니다</td>
+    </tr>
+    </tbody>`;
+    return;
+  }
 
   const thead = document.createElement('thead');
   const tbody = document.createElement('tbody');
@@ -140,7 +154,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         sql_code: sqlStr,
       });
       const res = db.exec(sqlStr)[0];
-      res && getResultTable(res);
+      getResultTable(res);
     } catch (err) {
       showErrorMessage(err);
     }
