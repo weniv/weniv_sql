@@ -82,3 +82,24 @@ document.querySelectorAll('.kebab-list a').forEach((anchor) => {
     collectAnchorClick(event, `교육서비스:${anchor.innerText}`),
   );
 });
+
+//------------------------------------------------------------
+// @post /collect/sql
+function collectSQL() {
+  const session_id = sessionStorage.getItem('session_id');
+  const contents = window.editor.getValue();
+  fetch(`${BASE_URL}/collect/sql`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Session-Id': session_id,
+    },
+    body: JSON.stringify({ contents, session_id }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+    })
+    .catch((error) => console.error('Error:', error));
+}

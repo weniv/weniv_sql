@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         sql_code: sqlStr,
       });
       const res = db.exec(sqlStr)[0];
+      collectSQL();
       getResultTable(res);
     } catch (err) {
       showErrorMessage(err);
