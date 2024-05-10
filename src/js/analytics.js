@@ -5,12 +5,15 @@ const BASE_URL = 'https://www.analytics.weniv.co.kr';
 function collectPageView(session_id) {
   const header = {
     'Content-Type': 'application/json',
-    'Session-Id': session_id,
   };
   const payload = {
     url: window.location.href,
-    session_id: session_id,
   };
+
+  if (session_id) {
+    header['Session-Id'] = session_id;
+    payload.session_id = session_id;
+  }
 
   fetch(`${BASE_URL}/collect/pageview`, {
     method: 'POST',
@@ -34,12 +37,8 @@ window.addEventListener('load', (e) => {
   const session_id = sessionStorage.getItem('session_id');
   const lastPage = sessionStorage.getItem('lastPage');
 
-  if (!session_id) {
-    collectPageView();
-  } else if (lastPage !== window.location.pathname) {
+  if (lastPage !== window.location.pathname) {
     collectPageView(session_id);
-  } else {
-    return;
   }
 
   sessionStorage.setItem('lastPage', window.location.pathname);
