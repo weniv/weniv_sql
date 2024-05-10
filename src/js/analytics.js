@@ -46,7 +46,7 @@ window.addEventListener('load', (e) => {
 
 //------------------------------------------------------------
 // @post /collect/anchor-click
-function collectAnchorClick(event, type) {
+async function collectAnchorClick(event, type) {
   console.log(event.currentTarget, type);
   event.preventDefault(); // 기본 동작 막기
 
@@ -57,26 +57,51 @@ function collectAnchorClick(event, type) {
   const source_url = window.location.href;
   const target_url = ANCHOR.href;
   const target_tar = ANCHOR.target || '_self';
-
-  fetch(`${BASE_URL}/collect/anchor-click`, {
-    method: 'POST',
-    headers: {
+  console.log(
+    `header:${JSON.stringify({
       'Content-Type': 'application/json',
       'Session-Id': session_id,
-    },
-    body: JSON.stringify({ source_url, target_url, type }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    })
-    .finally(() => {
-      window.open(target_url, target_tar);
+    })}`,
+  );
+  console.log(`body:${JSON.stringify({ source_url, target_url, type })}`);
+
+  try {
+    const response = await fetch(`${BASE_URL}/collect/anchor-click`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Session-Id': session_id,
+      },
+      body: JSON.stringify({ source_url, target_url, type }),
     });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  } finally {
+    window.open(target_url, target_tar);
+  }
+
+  // fetch(`${BASE_URL}/collect/anchor-click`, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'Session-Id': session_id,
+  //   },
+  //   body: JSON.stringify({ source_url, target_url, type }),
+  // })
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error:', error);
+  //   })
+  //   .finally(() => {
+  //     window.open(target_url, target_tar);
+  //   });
 }
 
 // 외부 링크
