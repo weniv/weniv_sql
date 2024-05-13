@@ -92,9 +92,9 @@ function collectSQL() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      // 'Session-Id': session_id,
+      'Session-Id': session_id,
     },
-    body: JSON.stringify({ contents, session_id }),
+    body: JSON.stringify({ contents }),
   })
     .then((response) => {
       if (!response.ok) {
