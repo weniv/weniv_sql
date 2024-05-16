@@ -28,20 +28,20 @@ function collectPageView(session_id) {
     })
     .then((data) => {
       if (!session_id) {
-        sessionStorage.setItem('session_id', data.session_id);
+        localStorage.setItem('session_id', data.session_id);
       }
     })
     .catch((error) => console.error('Error:', error));
 }
 window.addEventListener('load', (e) => {
-  const session_id = sessionStorage.getItem('session_id');
-  const lastPage = sessionStorage.getItem('lastPage');
+  const session_id = localStorage.getItem('session_id');
+  const lastPage = localStorage.getItem('lastPage');
 
   if (lastPage !== window.location.pathname) {
     collectPageView(session_id);
   }
 
-  sessionStorage.setItem('lastPage', window.location.pathname);
+  localStorage.setItem('lastPage', window.location.pathname);
 });
 
 //------------------------------------------------------------
@@ -51,7 +51,7 @@ async function collectAnchorClick(event, type) {
 
   const ANCHOR = event.currentTarget;
 
-  const session_id = sessionStorage.getItem('session_id');
+  const session_id = localStorage.getItem('session_id');
 
   const source_url = window.location.href;
   const target_url = ANCHOR.href;
@@ -86,7 +86,7 @@ document.querySelectorAll('.kebab-list a').forEach((anchor) => {
 //------------------------------------------------------------
 // @post /collect/sql
 function collectSQL() {
-  const session_id = sessionStorage.getItem('session_id');
+  const session_id = localStorage.getItem('session_id');
   const contents = window.editor.getValue();
   fetch(`${BASE_URL}/collect/sql`, {
     method: 'POST',
