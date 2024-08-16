@@ -22,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
       lineNumbers: true,
       matchBrackets: true,
       autofocus: true,
-      extraKeys: { Tab: 'autocomplete' },
+      extraKeys: { 
+        Tab: 'autocomplete',
+        'Ctrl-/': 'toggleComment' 
+      },
     },
   );
   window.editor.setValue('SELECT * FROM 상품;');
