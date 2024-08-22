@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     },
   );
-  window.editor.setValue('SELECT * FROM 상품;\nSELECT * FROM 고객;\n\n\n');
+  window.editor.setValue('SELECT * FROM 상품;\n\n\n');
   window.editor.setSize('100%', '100%');
 });
 
