@@ -22,13 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
       lineNumbers: true,
       matchBrackets: true,
       autofocus: true,
-      extraKeys: { 
+      extraKeys: {
         Tab: 'autocomplete',
-        'Ctrl-/': 'toggleComment' 
+        'Ctrl-/': 'toggleComment',
       },
     },
   );
-  window.editor.setValue('SELECT * FROM 상품;');
+  window.editor.setValue('SELECT * FROM 상품;\n\n\n');
+  window.editor.setSize('100%', '100%');
 });
 
 const SQLTableList = {
