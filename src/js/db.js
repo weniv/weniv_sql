@@ -66,20 +66,26 @@ const getResultTable = (data) => {
   const errorMsg = document.querySelector('.error-msg');
   errorMsg.classList.add('hidden');
 
-  const table = document.querySelector('.result-table');
-  table.innerHTML = '';
+  const container = document.querySelector('.result-table-cont');
+  const tableCont = document.createElement('div');
+  container.classList.add('table-cont');
+
+  const table = document.createElement('table');
+  table.classList.add('result-table');
+  // table.innerHTML = '';
   if (!data) {
     table.innerHTML = `
-    <thead>
+      <thead>
+        <tr>
+          <th>결과</th>
+        </tr>
+      </thead>
+      <tbody>
       <tr>
-        <th>결과</th>
+      <td>조회된 결과가 없습니다</td>
       </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>조회된 결과가 없습니다</td>
-    </tr>
-    </tbody>`;
+      </tbody>`;
+
     return;
   }
 
@@ -94,6 +100,8 @@ const getResultTable = (data) => {
   });
   thead.appendChild(tr);
   table.appendChild(thead);
+  tableCont.appendChild(table);
+  container.appendChild(tableCont);
 
   values.forEach((value, index) => {
     const tr = document.createElement('tr');
@@ -153,13 +161,24 @@ document.addEventListener('DOMContentLoaded', async () => {
       gtag('event', 'run_sql', {
         sql_code: sqlStr,
       });
+      const results = db.exec(sqlStr);
+      console.log(results);
       const res = db.exec(sqlStr)[0];
       collectSQL();
-      getResultTable(res);
+      // getResultTable(res);
+      clearResult();
+      results.forEach((result) => {
+        getResultTable(result);
+      });
     } catch (err) {
       showErrorMessage(err);
     }
   };
+
+  function clearResult() {
+    const $resultCont = document.querySelector('.result-table-cont');
+    $resultCont.innerHTML = '';
+  }
 
   const $btnRun = document.querySelector('.run-btn');
   $btnRun.addEventListener('click', () => {
