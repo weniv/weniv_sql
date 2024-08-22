@@ -1,8 +1,8 @@
 {
-  "dependencies": {
-    "node-sass": "^9.0.0"
-  },
   "scripts": {
-    "scss": "node-sass -wr --source-map true src/style/style.scss src/style/style.css"
+    "scss": "sass -w --source-map src/style/style.scss src/style/style.css"
+  },
+  "dependencies": {
+    "sass": "^1.77.8"
   }
 }
