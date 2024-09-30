@@ -12,6 +12,11 @@ copyBtn.addEventListener('click', (e) => {
   });
 });
 
+// URL쿼리 스트링으로 에디터 기본 입력값 설정
+const urlParams = new URLSearchParams(window.location.search);
+const defaultCode = urlParams.get('code');
+
+
 document.addEventListener('DOMContentLoaded', () => {
   window.editor = CodeMirror.fromTextArea(
     document.getElementById('codeMirrorTextarea'),
@@ -28,7 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     },
   );
-  window.editor.setValue('SELECT * FROM 상품;\n\n\n');
+  if (defaultCode) {
+    window.editor.setValue(defaultCode);
+  } else {
+    window.editor.setValue('SELECT * FROM 상품;\n\n\n');
+  }
   window.editor.setSize('100%', '100%');
 });
 
